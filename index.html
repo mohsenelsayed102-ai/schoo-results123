@@ -7,43 +7,38 @@
 <body>
   <h2>بوابة نتائج الطلاب</h2>
   <input type="text" id="seatNumber" placeholder="أدخل رقم الجلوس...">
-  <button onclick="searchResult()">بحث</button>
+  <button id="searchBtn">بحث</button>
   <div id="loading" style="display:none;">جاري البحث...</div>
   <div id="resultBox"></div>
-
   <script>
-    // ضع رابط الـ API الخاص بك هنا بين علامات التنصيص
     const API_URL = "https://script.google.com/macros/s/AKfycbzNcHRB-FH7-9kVEmmDMBOjYP3l-sXQsg63a4sKiJ6FarVOZ366y57ToCjMmVQFHD5wxw/exec";
-
-    function searchResult() {
+    document.getElementById("searchBtn").addEventListener("click", function() {
       var seatNum = document.getElementById("seatNumber").value.trim();
       var loading = document.getElementById("loading");
       var resultBox = document.getElementById("resultBox");
-      
-      if(!seatNum) { alert("من فضلك أدخل رقم الجلوس"); return; }
-      
+      if(!seatNum) { alert("أدخل رقم الجلوس"); return; }
       loading.style.display = "block";
       resultBox.innerHTML = "";
-      
-      fetch(API_URL + "?id=" + seatNum)
+      fetch(API_URL + "?id=" + encodeURIComponent(seatNum))
         .then(response => response.json())
         .then(data => {
           loading.style.display = "none";
-          if(data && data.رقم_الجلوس) {
+          if(data) {
             let html = "<h3>النتيجة:</h3>";
             for (let key in data) {
               html += <p><strong>${key}:</strong> ${data[key]}</p>;
             }
             resultBox.innerHTML = html;
           } else {
-            resultBox.innerHTML = "لم يتم العثور على نتيجة لهذا الرقم.";
+            resultBox.innerHTML = "لم يتم العثور على النتيجة.";
           }
         })
         .catch(err => {
           loading.style.display = "none";
-          resultBox.innerHTML = "حدث خطأ في الاتصال.";
+          resultBox.innerHTML = "خطأ في الاتصال بالسيرفر.";
+          console.error(err);
         });
-    }
+    });
   </script>
 </body>
 </html>
