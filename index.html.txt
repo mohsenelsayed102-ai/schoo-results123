@@ -29,7 +29,7 @@
 
 <script>
   // ⚠️ استبدل الرابط اللي تحت ده برابط الـ API اللي نسخته من جوجل في الخطوة الأولى
-  const API_URL = "https://script.google.com/macros/s/AKfycbx00I2C8ggJbaOsqN2PSzjrNBPw8jMePctm3heA62u1_bgWcow72IjHUhqeBHcJR5wZ/exec";
+  const API_URL = "https://"script.google.com/macros/s/AKfycbx00I2C8ggJbaOsqN2PSzjrNBPw8jMePctm3heA62u1_bgWcow72IjHUhqeBHcJR5wZ/exec";
 
   async function searchResult() {
     var seatNum = document.getElementById("seatNumber").value.trim();
