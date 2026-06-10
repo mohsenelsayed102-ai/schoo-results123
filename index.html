@@ -260,15 +260,15 @@
       text-shadow: 0 0 12px var(--error-glow) !important;
     }
 
-    /* تنسيق الحقوق لتظهر في أقصى يسار أسفل الصفحة وبشكل ناعم */
+    /* تنسيق الحقوق لتظهر في أقصى يسار أسفل الصفحة بشكل مصغر وغامض جداً */
     .credits {
       margin-top: 30px;
-      font-size: 11px;
-      color: rgba(255, 255, 255, 0.25);
+      font-size: 10px; /* تم تصغير الخط أكثر */
+      color: rgba(255, 255, 255, 0.18); /* جعل اللون شفافاً وخفيفاً جداً ليكون غير لافت */
       letter-spacing: 1px;
-      font-family: Arial, sans-serif;
-      text-align: left; /* جعل النص يذهب لليسار */
-      padding-left: 5px; /* مسافة جمالية صغيرة من الحافة اليسرى */
+      font-family: 'Consolas', 'Courier New', monospace; /* خط برمجي مذهل للاختصارات */
+      text-align: left;
+      padding-left: 5px;
     }
   </style>
 </head>
@@ -302,13 +302,13 @@
     </div>
   </div>
 
-  <!-- الحقوق المحدثة لليسار بالاسم الجديد وبخط غير واضح تماماً -->
-  <div class="credits">Designed by MOo_7_SeN</div>
+  <!-- الحقوق بشكلها الجديد والأجمل بناءً على رؤيتك الفنية -->
+  <div class="credits">&lt;/&gt; MOo_7_SeN</div>
 </div>
 
 <script>
-  // ⚠️ ضع هنا رابط جوجل شيت الطويل الخاص بك الذي ينتهي بـ /exec
-  const API_URL = "https://script.google.com/macros/s/AKfycbx00I2C8ggJbaOsqN2PSzjrNBPw8jMePctm3heA62u1_bgWcow72IjHUhqeBHcJR5wZ/exec";
+  // ⚠️ وضع هنا رابط جوجل شيت الطويل الخاص بك الذي ينتهي بـ /exec
+  const API_URL = "ضع_رابط_جوجل_هنا";
 
   // تحسين المدخلات: السماح بالأرقام فقط ومنع الحروف والمسافات
   document.getElementById("seatNumber").addEventListener("input", function(e) {
