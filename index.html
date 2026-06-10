@@ -107,14 +107,8 @@
       font-size: 19px;
       font-weight: 700;
       color: #a855f7;
-      margin-bottom: 5px;
+      margin-bottom: 25px; /* تم زيادة المسافة قليلاً لتعويض السطر المحذوف */
       text-shadow: 0 0 10px rgba(168, 85, 247, 0.4);
-    }
-
-    p.subtitle {
-      color: var(--text-muted);
-      margin: 0 0 30px 0;
-      font-size: 14px;
     }
 
     .input-group {
@@ -248,18 +242,14 @@
       font-weight: 500;
     }
 
+    /* جميع القيم تظهر بلونها الطبيعي الأبيض افتراضياً */
     .result-item span.value {
       color: #ffffff;
       font-weight: 700;
-      text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
-    }
-    
-    .result-item:nth-child(even) span.value {
-      color: #38bdf8;
-      text-shadow: 0 0 8px rgba(56, 189, 248, 0.5);
+      text-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
     }
 
-    /* فئات مخصصة لتلوين حالة الطالب ديناميكياً */
+    /* فئات مخصصة لتلوين النصوص بناءً على طلبك */
     .status-success {
       color: var(--success) !important;
       text-shadow: 0 0 12px var(--success-glow) !important;
@@ -279,13 +269,13 @@
     <img src="1000127664.jpg" alt="شعار المدرسة" class="logo-img">
   </div>
   
-  <!-- العنوان الرئيسي بخط GE SS Unique Bold المخصص من خلال الاستدعاء الاحتياطي الذكي -->
+  <!-- العنوان الرئيسي بخط GE SS Unique Bold المخصص -->
   <h1 class="school-title">مدرسة الشهيد ملازم أول حماده فهمي مباشر الثانوية المشتركة</h1>
   
-  <!-- العنوان الفرعي المطلوب بخط Tajawal -->
+  <!-- العنوان الفرعي بخط Tajawal -->
   <div class="class-subtitle">نتيجة الصف الأول الثانوي</div>
   
-  <p class="subtitle">أدخل رقم الجلوس للاستعلام عن النتيجة بالدرجات</p>
+  <!-- تم حذف جملة التوجيه من هنا لتنقية التصميم وبساطته -->
   
   <div class="input-group">
     <input type="text" id="seatNumber" placeholder="اكتب رقم الجلوس هنا..." autocomplete="off">
@@ -363,20 +353,24 @@
         if(data && Object.keys(data).length > 0) {
           let html = "";
           for (let key in data) {
-            let valueText = String(data[key]);
-            let statusClass = "";
+            let valueText = String(data[key]).trim();
+            let statusClass = "class='value'";
             
-            // تلوين ذكي لحالة الطالب بناءً على الكلمة
-            if (key.includes("حالة") || key.includes("النتيجة") || key.includes("الحالة")) {
-              if (valueText.includes("ناجح")) {
-                statusClass = "class='value status-success'";
-              } else if (valueText.includes("راسب") || valueText.includes("دور") || valueText.includes("ضعيف")) {
-                statusClass = "class='value status-error'";
-              } else {
-                statusClass = "class='value'";
-              }
-            } else {
-              statusClass = "class='value'";
+            // 1. فحص كلمة "غائب" في الدرجة أو المواد لتلوينها بالأحمر
+            if (valueText.includes("غائب") || valueText.includes("غايب")) {
+              statusClass = "class='value status-error'";
+            }
+            // 2. فحص عبارة "ناقل ومنقول للصف الثالث" لتلوينها بالأخضر
+            else if (valueText.includes("ناقل") || valueText.includes("منقول")) {
+              statusClass = "class='value status-success'";
+            }
+            // 3. فحص كلمات الرسوب الخاصة والمواد (مواد رسوب، نفس، رياضيات) لتلوينها بالأحمر
+            else if (valueText.includes("رسوب") || valueText.includes("نفس") || valueText.includes("رياضيات") || key.includes("رسوب")) {
+              statusClass = "class='value status-error'";
+            }
+            // 4. الإبقاء على الحالة الافتراضية للناجح والدرجات العادية (باللون الأبيض الطبيعي)
+            else if (valueText.includes("ناجح")) {
+              statusClass = "class='value'"; 
             }
 
             html += `
@@ -389,7 +383,8 @@
           resultCard.innerHTML = html;
           resultBox.style.display = "block";
           msgBox.style.color = "var(--success)";
-          msgBox.innerHTML = "🔮 تم جلب النتيجة بنجاح!";
+          // العبارة الجديدة اللطيفة بناءً على طلبك
+          msgBox.innerHTML = "✨ مبروك! ظهرت النتيجة الآن.. نتمنى لك التوفيق والنجاح 🎉";
         } else {
           msgBox.style.color = "var(--error)";
           msgBox.innerHTML = "🔍 عذراً، لم نجد أي نتيجة مرتبطة برقم الجلوس هذا.";
