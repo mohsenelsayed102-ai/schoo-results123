@@ -3,7 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>بوابة استعلام نتائج الطلاب | مدرسة الشهيد حماده فهمي مباشر</title>
+  <title>نتيجة الصف الأول الثانوي | مدرسة الشهيد حماده فهمي مباشر</title>
+  
+  <!-- استدعاء خطوط Google Fonts: خط Tajawal وخطوط مشابهة لـ GE SS لدعمها على المتصفحات -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;750;800&family=Noto+Kufi+Arabic:wght@700;800&display=swap" rel="stylesheet">
+
   <style>
     :root {
       --primary: #6366f1;
@@ -14,11 +20,15 @@
       --error-glow: rgba(244, 63, 94, 0.4);
       --text-main: #ffffff;
       --text-muted: #cbd5e1;
+      
+      /* تعريف الخطوط المخصصة */
+      --font-main: 'Tajawal', 'Segoe UI', sans-serif;
+      --font-title: 'GE SS Unique Bold', 'Noto Kufi Arabic', 'Tajawal', sans-serif;
     }
 
     /* خلفية متحركة بألوان متدرجة ومبهجة */
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: var(--font-main);
       background: linear-gradient(-45deg, #0f172a, #1e1b4b, #2e1065, #3b0764);
       background-size: 400% 400%;
       animation: gradientBG 15s ease infinite;
@@ -56,7 +66,7 @@
       position: relative;
     }
 
-    /* منطقة الشعار المحدثة باستخدام صورتك */
+    /* منطقة الشعار */
     .logo-area {
       margin-bottom: 20px;
       animation: float 3s ease-in-out infinite;
@@ -78,23 +88,27 @@
       50% { transform: translateY(-8px); }
     }
 
-    h2 {
-      margin: 0 0 5px 0;
-      font-size: 24px;
+    /* العنوان الرئيسي بخط GE SS Unique Bold المخصص */
+    h1.school-title {
+      font-family: var(--font-title);
+      margin: 0 0 12px 0;
+      font-size: 22px;
       font-weight: 800;
-      letter-spacing: 0.5px;
-      background: linear-gradient(to left, #6366f1, #a855f7, #ec4899);
+      line-height: 1.4;
+      background: linear-gradient(to left, #ffffff, #c7d2fe, #a5b4fc);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      filter: drop-shadow(0 2px 8px rgba(168, 85, 247, 0.3));
+      filter: drop-shadow(0 2px 8px rgba(99, 102, 241, 0.3));
     }
 
-    .school-name {
-      font-size: 14px;
-      color: #a855f7;
+    /* العنوان الفرعي بخط Tajawal */
+    .class-subtitle {
+      font-family: var(--font-main);
+      font-size: 19px;
       font-weight: 700;
-      margin-bottom: 15px;
-      text-shadow: 0 0 10px rgba(168, 85, 247, 0.3);
+      color: #a855f7;
+      margin-bottom: 5px;
+      text-shadow: 0 0 10px rgba(168, 85, 247, 0.4);
     }
 
     p.subtitle {
@@ -109,6 +123,7 @@
 
     /* حقل إدخال مضيء وتفاعلي */
     input[type="text"] {
+      font-family: var(--font-main);
       width: 100%;
       padding: 16px 20px;
       box-sizing: border-box;
@@ -129,14 +144,15 @@
       box-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
     }
 
-    /* زر بحث قوي وله توهج عند المرور فوقه */
+    /* زر بحث قوي وله توهج */
     button {
+      font-family: var(--font-main);
       width: 100%;
       background: linear-gradient(90deg, #6366f1, #a855f7);
       color: white;
       border: none;
       padding: 16px;
-      font-size: 16px;
+      font-size: 17px;
       font-weight: 700;
       border-radius: 14px;
       cursor: pointer;
@@ -258,12 +274,17 @@
 <body>
 
 <div class="container">
-  <!-- تم استبدال الرمز التعبيري بصورتك المرفوعة هنا -->
+  <!-- الشعار الخاص بالمدرسة -->
   <div class="logo-area">
     <img src="1000127664.jpg" alt="شعار المدرسة" class="logo-img">
   </div>
-  <h2>بوابة نتائج الطلاب</h2>
-  <div class="school-name">مدرسة الشهيد ملازم أول حماده فهمي مباشر الثانوية المشتركة</div>
+  
+  <!-- العنوان الرئيسي بخط GE SS Unique Bold المخصص من خلال الاستدعاء الاحتياطي الذكي -->
+  <h1 class="school-title">مدرسة الشهيد ملازم أول حماده فهمي مباشر الثانوية المشتركة</h1>
+  
+  <!-- العنوان الفرعي المطلوب بخط Tajawal -->
+  <div class="class-subtitle">نتيجة الصف الأول الثانوي</div>
+  
   <p class="subtitle">أدخل رقم الجلوس للاستعلام عن النتيجة بالدرجات</p>
   
   <div class="input-group">
@@ -368,7 +389,7 @@
           resultCard.innerHTML = html;
           resultBox.style.display = "block";
           msgBox.style.color = "var(--success)";
-          msgBox.innerHTML = "نتيجة الظالب!";
+          msgBox.innerHTML = "🔮 تم جلب النتيجة بنجاح!";
         } else {
           msgBox.style.color = "var(--error)";
           msgBox.innerHTML = "🔍 عذراً، لم نجد أي نتيجة مرتبطة برقم الجلوس هذا.";
