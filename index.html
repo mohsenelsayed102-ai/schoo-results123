@@ -2,43 +2,268 @@
 <html dir="rtl" lang="ar">
 <head>
   <meta charset="UTF-8">
-  <title>بوابة نتائج الطلاب</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>بوابة استعلام نتائج الطلاب</title>
+  <style>
+    :root {
+      --primary: #4f46e5;
+      --primary-hover: #4338ca;
+      --background: #f8fafc;
+      --card-bg: #ffffff;
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --success: #10b981;
+      --error: #ef4444;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--background);
+      color: var(--text-main);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      background: var(--card-bg);
+      padding: 40px 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+      width: 100%;
+      max-width: 480px;
+      text-align: center;
+      box-sizing: border-box;
+      border: 1px solid #e2e8f0;
+    }
+
+    .logo-area {
+      font-size: 48px;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      margin: 0 0 10px 0;
+      color: var(--text-main);
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    p.subtitle {
+      color: var(--text-muted);
+      margin: 0 0 30px 0;
+      font-size: 15px;
+    }
+
+    .input-group {
+      position: relative;
+      margin-bottom: 20px;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 14px 20px;
+      box-sizing: border-box;
+      border: 2px solid #e2e8f0;
+      border-radius: 12px;
+      font-size: 16px;
+      text-align: center;
+      transition: all 0.3s ease;
+      color: var(--text-main);
+      font-weight: 600;
+    }
+
+    input[type="text"]:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
+    }
+
+    button {
+      width: 100%;
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      padding: 14px;
+      font-size: 16px;
+      font-weight: 600;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.2);
+    }
+
+    button:hover {
+      background-color: var(--primary-hover);
+      transform: translateY(-1px);
+    }
+
+    button:active {
+      transform: translateY(1px);
+    }
+
+    .loading-spinner {
+      display: none;
+      margin: 20px auto 0 auto;
+      border: 4px solid #f3f3f3;
+      border-top: 4px solid var(--primary);
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    #msgBox {
+      margin-top: 20px;
+      font-weight: 600;
+      font-size: 15px;
+    }
+
+    #resultBox {
+      margin-top: 30px;
+      text-align: right;
+      display: none;
+      animation: fadeIn 0.4s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .result-card {
+      background: #f8fafc;
+      border-radius: 12px;
+      padding: 15px;
+      border: 1px solid #edf2f7;
+    }
+
+    .result-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 5px;
+      border-bottom: 1px solid #e2e8f0;
+      font-size: 15px;
+    }
+
+    .result-item:last-child {
+      border-bottom: none;
+    }
+
+    .result-item span.label {
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .result-item span.value {
+      color: var(--text-main);
+      font-weight: 700;
+    }
+  </style>
 </head>
 <body>
-  <h2>بوابة نتائج الطلاب</h2>
-  <input type="text" id="seatNumber" placeholder="أدخل رقم الجلوس...">
-  <button id="searchBtn">بحث</button>
-  <div id="loading" style="display:none;">جاري البحث...</div>
-  <div id="resultBox"></div>
-  <script>
-    const API_URL = "https://script.google.com/macros/s/AKfycbx00I2C8ggJbaOsqN2PSzjrNBPw8jMePctm3heA62u1_bgWcow72IjHUhqeBHcJR5wZ/exec";
-    document.getElementById("searchBtn").addEventListener("click", function() {
-      var seatNum = document.getElementById("seatNumber").value.trim();
-      var loading = document.getElementById("loading");
-      var resultBox = document.getElementById("resultBox");
-      if(!seatNum) { alert("أدخل رقم الجلوس"); return; }
-      loading.style.display = "block";
-      resultBox.innerHTML = "";
-      fetch(API_URL + "?id=" + encodeURIComponent(seatNum))
-        .then(response => response.json())
-        .then(data => {
-          loading.style.display = "none";
-          if(data) {
-            let html = "<h3>النتيجة:</h3>";
-            for (let key in data) {
-              html += <p><strong>${key}:</strong> ${data[key]}</p>;
-            }
-            resultBox.innerHTML = html;
-          } else {
-            resultBox.innerHTML = "لم يتم العثور على النتيجة.";
+
+<div class="container">
+  <div class="logo-area">🎓</div>
+  <h2>منصة نتائج الطلاب</h2>
+  <p class="subtitle">أدخل رقم الجلوس الخاص بك للحصول على الدرجات فوراً</p>
+  
+  <div class="input-group">
+    <input type="text" id="seatNumber" placeholder="مثال: 1024" autocomplete="off">
+  </div>
+  
+  <button id="searchBtn">استعلام عن النتيجة</button>
+  
+  <div id="loading" class="loading-spinner"></div>
+  <div id="msgBox"></div>
+  
+  <div id="resultBox">
+    <div class="result-card" id="resultCard">
+      </div>
+  </div>
+</div>
+
+<script>
+  // ⚠️ ضع هنا رابط جوجل شيت الطويل المستخرج من الـ Web App (الذي ينتهي بـ /exec)
+  const API_URL = "https://script.google.com/macros/s/AKfycbx00I2C8ggJbaOsqN2PSzjrNBPw8jMePctm3heA62u1_bgWcow72IjHUhqeBHcJR5wZ/exec";
+
+  document.getElementById("searchBtn").addEventListener("click", function() {
+    const seatNum = document.getElementById("seatNumber").value.trim();
+    const loading = document.getElementById("loading");
+    const msgBox = document.getElementById("msgBox");
+    const resultBox = document.getElementById("resultBox");
+    const resultCard = document.getElementById("resultCard");
+    
+    if(!seatNum) {
+      msgBox.style.color = "var(--error)";
+      msgBox.innerHTML = "⚠️ برجاء كتابة رقم الجلوس أولاً!";
+      return;
+    }
+    
+    // إعادة تهيئة الواجهة
+    msgBox.innerHTML = "";
+    resultBox.style.display = "none";
+    loading.style.display = "block";
+    
+    // بدء جلب البيانات
+    fetch(API_URL + "?id=" + encodeURIComponent(seatNum))
+      .then(response => {
+        if (!response.ok) throw new Error("السيرفر لا يستجيب بشكل صحيح.");
+        return response.text(); // نستقبل النص أولاً لفحصه
+      })
+      .then(text => {
+        loading.style.display = "none";
+        
+        // فحص ما إذا كان المستلم هو كود مكسور أو صفحة خطأ وليس JSON
+        if (text.trim().startsWith("<!DOCTYPE") || text.trim().startsWith("<html")) {
+          msgBox.style.color = "var(--error)";
+          msgBox.innerHTML = "❌ خطأ: الرابط المستخدم لا يعود ببيانات. تأكد من إعداد الصلاحيات Anyone في جوجل شيت.";
+          return;
+        }
+
+        let data;
+        try {
+          data = JSON.parse(text);
+        } catch(e) {
+          msgBox.style.color = "var(--error)";
+          msgBox.innerHTML = "❌ خطأ في معالجة البيانات القادمة من جوجل.";
+          return;
+        }
+        
+        if(data && Object.keys(data).length > 0) {
+          let html = "";
+          for (let key in data) {
+            html += `
+              <div class="result-item">
+                <span class="label">${key}</span>
+                <span class="value">${data[key]}</span>
+              </div>
+            `;
           }
-        })
-        .catch(err => {
-          loading.style.display = "none";
-          resultBox.innerHTML = "خطأ في الاتصال بالسيرفر.";
-          console.error(err);
-        });
-    });
-  </script>
+          resultCard.innerHTML = html;
+          resultBox.style.display = "block";
+          msgBox.style.color = "var(--success)";
+          msgBox.innerHTML = "✨ تم جلب النتيجة بنجاح";
+        } else {
+          msgBox.style.color = "var(--error)";
+          msgBox.innerHTML = "🔍 عذراً، لم يتم العثور على نتيجة لرقم الجلوس هذا.";
+        }
+      })
+      .catch(err => {
+        loading.style.display = "none";
+        msgBox.style.color = "var(--error)";
+        msgBox.innerHTML = "📡 خطأ في الاتصال بالإنترنت أو أن رابط السيرفر مكسور.";
+        console.error(err);
+      });
+  });
+</script>
 </body>
 </html>
