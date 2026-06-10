@@ -75,10 +75,10 @@
     .logo-img {
       width: 120px;
       height: 120px;
-      object-fit: cover;
+      object-fit: contain; /* تم تعديله ليناسب الشعار تماماً دون قص حواف */
       border-radius: 50%;
       background: #ffffff;
-      padding: 4px;
+      padding: 6px;
       border: 2px solid rgba(255, 255, 255, 0.2);
       box-shadow: 0 0 20px rgba(255, 255, 255, 0.2), 0 0 35px rgba(168, 85, 247, 0.4);
     }
@@ -107,7 +107,7 @@
       font-size: 19px;
       font-weight: 700;
       color: #a855f7;
-      margin-bottom: 25px; /* تم زيادة المسافة قليلاً لتعويض السطر المحذوف */
+      margin-bottom: 25px;
       text-shadow: 0 0 10px rgba(168, 85, 247, 0.4);
     }
 
@@ -249,7 +249,7 @@
       text-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
     }
 
-    /* فئات مخصصة لتلوين النصوص بناءً على طلبك */
+    /* فئات مخصصة لتلوين النصوص */
     .status-success {
       color: var(--success) !important;
       text-shadow: 0 0 12px var(--success-glow) !important;
@@ -264,9 +264,9 @@
 <body>
 
 <div class="container">
-  <!-- الشعار الخاص بالمدرسة -->
+  <!-- الشعار المحدث باستخدام الرابط المباشر من جوجل الذي أرسلته -->
   <div class="logo-area">
-    <img src="1000127664.jpg" alt="شعار المدرسة" class="logo-img">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRef5idcLoAv_1MLhlacUkSOZUGm1HBSSL4PA&s" alt="شعار المدرسة" class="logo-img">
   </div>
   
   <!-- العنوان الرئيسي بخط GE SS Unique Bold المخصص -->
@@ -274,8 +274,6 @@
   
   <!-- العنوان الفرعي بخط Tajawal -->
   <div class="class-subtitle">نتيجة الصف الأول الثانوي</div>
-  
-  <!-- تم حذف جملة التوجيه من هنا لتنقية التصميم وبساطته -->
   
   <div class="input-group">
     <input type="text" id="seatNumber" placeholder="اكتب رقم الجلوس هنا..." autocomplete="off">
@@ -383,7 +381,7 @@
           resultCard.innerHTML = html;
           resultBox.style.display = "block";
           msgBox.style.color = "var(--success)";
-          // العبارة الجديدة اللطيفة بناءً على طلبك
+          // العبارة الجديدة اللطيفة
           msgBox.innerHTML = "✨ مبروك! ظهرت النتيجة الآن.. نتمنى لك التوفيق والنجاح 🎉";
         } else {
           msgBox.style.color = "var(--error)";
@@ -396,6 +394,6 @@
         msgBox.innerHTML = "📡 فشل الاتصال بالسيرفر، تحقق من الإنترنت أو الرابط.";
       });
   });
-  </script>
+</script>
 </body>
 </html>
