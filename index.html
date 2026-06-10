@@ -260,13 +260,19 @@
       text-shadow: 0 0 12px var(--error-glow) !important;
     }
 
+    /* سطر مخصص للنسبة المئوية يظهر بلون ذهبي/مضيء ومميز */
+    .percentage-style {
+      color: #fbbf24 !important;
+      text-shadow: 0 0 12px rgba(251, 191, 36, 0.5) !important;
+    }
+
     /* تنسيق الحقوق لتظهر في أقصى يسار أسفل الصفحة بشكل مصغر وغامض جداً */
     .credits {
       margin-top: 30px;
-      font-size: 10px; /* تم تصغير الخط أكثر */
-      color: rgba(255, 255, 255, 0.18); /* جعل اللون شفافاً وخفيفاً جداً ليكون غير لافت */
+      font-size: 10px;
+      color: rgba(255, 255, 255, 0.18);
       letter-spacing: 1px;
-      font-family: 'Consolas', 'Courier New', monospace; /* خط برمجي مذهل للاختصارات */
+      font-family: 'Consolas', 'Courier New', monospace;
       text-align: left;
       padding-left: 5px;
     }
@@ -307,7 +313,7 @@
 </div>
 
 <script>
-  // ⚠️ وضع هنا رابط جوجل شيت الطويل الخاص بك الذي ينتهي بـ /exec
+  // ⚠️ ضع هنا رابط جوجل شيت الطويل الخاص بك الذي ينتهي بـ /exec
   const API_URL = "https://script.google.com/macros/s/AKfycbx00I2C8ggJbaOsqN2PSzjrNBPw8jMePctm3heA62u1_bgWcow72IjHUhqeBHcJR5wZ/exec";
 
   // تحسين المدخلات: السماح بالأرقام فقط ومنع الحروف والمسافات
@@ -364,10 +370,20 @@
         
         if(data && Object.keys(data).length > 0) {
           let html = "";
+          let totalScore = null; // متغير لحفظ المجموع إذا وُجد
+
           for (let key in data) {
             let valueText = String(data[key]).trim();
             let statusClass = "class='value'";
             
+            // التقاط قيمة المجموع لحساب النسبة المئوية لاحقاً
+            if (key.includes("المجموع")) {
+              let parsedValue = parseFloat(valueText);
+              if (!isNaN(parsedValue)) {
+                totalScore = parsedValue;
+              }
+            }
+
             // 1. فحص كلمة "غائب" في الدرجة أو المواد لتلوينها بالأحمر
             if (valueText.includes("غائب") || valueText.includes("غايب")) {
               statusClass = "class='value status-error'";
@@ -391,7 +407,20 @@
                 <span ${statusClass}>${valueText}</span>
               </div>
             `;
+
+            // إذا انتهى سطر المجموع وتم التقاط الرقم بنجاح، ندرج النسبة المئوية فوراً تحته
+            if (key.includes("المجموع") && totalScore !== null) {
+              let percentage = ((totalScore / 380) * 100).toFixed(2); // حساب النسبة وتقريبها لأقرب رقمين عشريين
+              html += `
+                <div class="result-item">
+                  <span class="label">النسبة المئوية</span>
+                  <span class="value percentage-style">${percentage}%</span>
+                </div>
+              `;
+              totalScore = null; // تصفير المتغير للتأكيد
+            }
           }
+          
           resultCard.innerHTML = html;
           resultBox.style.display = "block";
           msgBox.style.color = "var(--success)";
