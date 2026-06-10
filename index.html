@@ -5,31 +5,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>نتيجة الصف الأول الثانوي | مدرسة الشهيد حماده فهمي مباشر</title>
   
-  <!-- استدعاء خطوط Google Fonts: خط Tajawal وخطوط مشابهة لـ GE SS لدعمها على المتصفحات -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;750;800&family=Noto+Kufi+Arabic:wght@700;800&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --primary: #6366f1;
-      --primary-hover: #4f46e5;
+      /* لوحة الألوان الملكية الفخمة الجديدة (Emerald & Gold) */
+      --primary: #d97706; /* ذهبي دافئ للتركيز */
+      --primary-hover: #b45309;
       --success: #10b981;
       --success-glow: rgba(16, 185, 129, 0.4);
       --error: #f43f5e;
       --error-glow: rgba(244, 63, 94, 0.4);
       --text-main: #ffffff;
-      --text-muted: #cbd5e1;
+      --text-muted: #d1d5db;
       
       /* تعريف الخطوط المخصصة */
       --font-main: 'Tajawal', 'Segoe UI', sans-serif;
       --font-title: 'GE SS Unique Bold', 'Noto Kufi Arabic', 'Tajawal', sans-serif;
     }
 
-    /* خلفية متحركة بألوان متدرجة ومبهجة */
+    /* خلفية متحركة بألوان متدرجة زمردية فخمة */
     body {
       font-family: var(--font-main);
-      background: linear-gradient(-45deg, #0f172a, #1e1b4b, #2e1065, #3b0764);
+      background: linear-gradient(-45deg, #022c22, #064e3b, #042f2e, #0f172a);
       background-size: 400% 400%;
       animation: gradientBG 15s ease infinite;
       color: var(--text-main);
@@ -49,16 +49,16 @@
       100% { background-position: 0% 50%; }
     }
 
-    /* الكارت الرئيسي بتأثير زجاجي مضيء */
+    /* الكارت الرئيسي بتأثير زجاجي مضيء بلون زمردي خفيف جداً */
     .container {
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+      background: rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
       padding: 40px 30px 25px 30px;
       border-radius: 24px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3), 
-                  0 0 40px rgba(99, 102, 241, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), 
+                  0 0 40px rgba(5, 150, 105, 0.15);
       width: 100%;
       max-width: 480px;
       text-align: center;
@@ -79,8 +79,8 @@
       border-radius: 50%;
       background: #ffffff;
       padding: 6px;
-      border: 2px solid rgba(255, 255, 255, 0.2);
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.2), 0 0 35px rgba(168, 85, 247, 0.4);
+      border: 2px solid rgba(251, 191, 36, 0.3); /* إطار ذهبي ناعم للشعار */
+      box-shadow: 0 0 20px rgba(251, 191, 36, 0.15), 0 0 35px rgba(5, 150, 105, 0.3);
     }
 
     @keyframes float {
@@ -88,41 +88,41 @@
       50% { transform: translateY(-8px); }
     }
 
-    /* العنوان الرئيسي بخط GE SS Unique Bold المخصص */
+    /* العنوان الرئيسي بخط مخصص متدرج بالأبيض والذهبي الناعم */
     h1.school-title {
       font-family: var(--font-title);
       margin: 0 0 12px 0;
       font-size: 22px;
       font-weight: 800;
       line-height: 1.4;
-      background: linear-gradient(to left, #ffffff, #c7d2fe, #a5b4fc);
+      background: linear-gradient(to left, #ffffff, #fde68a, #fcd34d);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      filter: drop-shadow(0 2px 8px rgba(99, 102, 241, 0.3));
+      filter: drop-shadow(0 2px 8px rgba(217, 119, 6, 0.25));
     }
 
-    /* العنوان الفرعي بخط Tajawal */
+    /* العنوان الفرعي باللون الذهبي الملكي المضيء */
     .class-subtitle {
       font-family: var(--font-main);
       font-size: 19px;
       font-weight: 700;
-      color: #a855f7;
+      color: #fbbf24;
       margin-bottom: 25px;
-      text-shadow: 0 0 10px rgba(168, 85, 247, 0.4);
+      text-shadow: 0 0 10px rgba(251, 191, 36, 0.3);
     }
 
     .input-group {
       margin-bottom: 20px;
     }
 
-    /* حقل إدخال مضيء وتفاعلي */
+    /* حقل إدخال مضيء وتفاعلي يتماشى مع الخلفية الزمردية */
     input[type="text"] {
       font-family: var(--font-main);
       width: 100%;
       padding: 16px 20px;
       box-sizing: border-box;
-      background: rgba(0, 0, 0, 0.2);
-      border: 2px solid rgba(255, 255, 255, 0.1);
+      background: rgba(0, 0, 0, 0.25);
+      border: 2px solid rgba(255, 255, 255, 0.08);
       border-radius: 14px;
       font-size: 18px;
       text-align: center;
@@ -133,16 +133,16 @@
 
     input[type="text"]:focus {
       outline: none;
-      border-color: var(--primary);
-      background: rgba(0, 0, 0, 0.4);
-      box-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
+      border-color: #059669; /* توهج أخضر عند التركيز */
+      background: rgba(0, 0, 0, 0.45);
+      box-shadow: 0 0 20px rgba(5, 150, 105, 0.4);
     }
 
-    /* زر بحث قوي وله توهج */
+    /* زر بحث قوي متدرج من الأخضر الزمردي إلى الذهبي الفخم */
     button {
       font-family: var(--font-main);
       width: 100%;
-      background: linear-gradient(90deg, #6366f1, #a855f7);
+      background: linear-gradient(90deg, #059669, #d97706);
       color: white;
       border: none;
       padding: 16px;
@@ -151,12 +151,12 @@
       border-radius: 14px;
       cursor: pointer;
       transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(168, 85, 247, 0.4);
+      box-shadow: 0 4px 15px rgba(217, 119, 6, 0.3);
     }
 
     button:hover {
       filter: brightness(1.1);
-      box-shadow: 0 0 25px rgba(168, 85, 247, 0.7);
+      box-shadow: 0 0 25px rgba(217, 119, 6, 0.5);
       transform: translateY(-2px);
     }
 
@@ -164,17 +164,17 @@
       transform: translateY(1px);
     }
 
-    /* مؤشر تحميل مضيء */
+    /* مؤشر تحميل مضيء باللون الذهبي */
     .loading-spinner {
       display: none;
       margin: 25px auto 0 auto;
       border: 4px solid rgba(255, 255, 255, 0.1);
-      border-top: 4px solid #a855f7;
+      border-top: 4px solid #fbbf24;
       border-radius: 50%;
       width: 35px;
       height: 35px;
       animation: spin 1s linear infinite;
-      filter: drop-shadow(0 0 10px #a855f7);
+      filter: drop-shadow(0 0 10px #fbbf24);
     }
 
     @keyframes spin {
@@ -186,7 +186,7 @@
       margin-top: 25px;
       font-weight: 600;
       font-size: 15px;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
     }
 
     #resultBox {
@@ -203,11 +203,11 @@
 
     /* كارت النتيجة المضيء والمقسم بشكل رائع */
     .result-card {
-      background: rgba(0, 0, 0, 0.35);
+      background: rgba(0, 0, 0, 0.4);
       border-radius: 16px;
       padding: 20px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.02);
     }
 
     .result-title {
@@ -215,8 +215,8 @@
       font-size: 18px;
       font-weight: 700;
       margin-bottom: 15px;
-      color: #38bdf8;
-      text-shadow: 0 0 10px rgba(56, 189, 248, 0.4);
+      color: #6ee7b7; /* لون أخضر فاتح مريح */
+      text-shadow: 0 0 10px rgba(110, 231, 183, 0.3);
     }
 
     .result-item {
@@ -242,14 +242,13 @@
       font-weight: 500;
     }
 
-    /* جميع القيم تظهر بلونها الطبيعي الأبيض افتراضياً */
     .result-item span.value {
       color: #ffffff;
       font-weight: 700;
       text-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
     }
 
-    /* فئات مخصصة لتلوين النصوص */
+    /* فئات مخصصة لتلوين النصوص التفاعلية */
     .status-success {
       color: var(--success) !important;
       text-shadow: 0 0 12px var(--success-glow) !important;
@@ -260,17 +259,17 @@
       text-shadow: 0 0 12px var(--error-glow) !important;
     }
 
-    /* سطر مخصص للنسبة المئوية يظهر بلون ذهبي/مضيء ومميز */
+    /* سطر مخصص للنسبة المئوية يظهر بلون ذهبي ماسي متوهج ومميز */
     .percentage-style {
-      color: #fbbf24 !important;
-      text-shadow: 0 0 12px rgba(251, 191, 36, 0.5) !important;
+      color: #fcd34d !important;
+      text-shadow: 0 0 12px rgba(252, 211, 77, 0.6) !important;
     }
 
     /* تنسيق الحقوق لتظهر في أقصى يسار أسفل الصفحة بشكل مصغر وغامض جداً */
     .credits {
       margin-top: 30px;
       font-size: 10px;
-      color: rgba(255, 255, 255, 0.18);
+      color: rgba(255, 255, 255, 0.15);
       letter-spacing: 1px;
       font-family: 'Consolas', 'Courier New', monospace;
       text-align: left;
@@ -281,15 +280,12 @@
 <body>
 
 <div class="container">
-  <!-- الشعار المحدث باستخدام الرابط المباشر من جوجل الذي أرسلته -->
   <div class="logo-area">
     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRef5idcLoAv_1MLhlacUkSOZUGm1HBSSL4PA&s" alt="شعار المدرسة" class="logo-img">
   </div>
   
-  <!-- العنوان الرئيسي بخط GE SS Unique Bold المخصص -->
   <h1 class="school-title">مدرسة الشهيد ملازم أول حماده فهمي مباشر الثانوية المشتركة</h1>
   
-  <!-- العنوان الفرعي بخط Tajawal -->
   <div class="class-subtitle">نتيجة الصف الأول الثانوي</div>
   
   <div class="input-group">
@@ -308,7 +304,6 @@
     </div>
   </div>
 
-  <!-- الحقوق بشكلها الجديد والأجمل بناءً على رؤيتك الفنية -->
   <div class="credits">&lt;/&gt; MOo_7_SeN</div>
 </div>
 
@@ -370,7 +365,7 @@
         
         if(data && Object.keys(data).length > 0) {
           let html = "";
-          let totalScore = null; // متغير لحفظ المجموع إذا وُجد
+          let totalScore = null; // متغير لحفظ المجموع لحساب النسبة
 
           for (let key in data) {
             let valueText = String(data[key]).trim();
@@ -392,13 +387,9 @@
             else if (valueText.includes("ناقل") || valueText.includes("منقول")) {
               statusClass = "class='value status-success'";
             }
-            // 3. فحص كلمات الرسوب الخاصة والمواد (مواد رسوب، نفس، رياضيات) لتلوينها بالأحمر
+            // 3. فحص كلمات الرسوب الخاصة والمواد لتلوينها بالأحمر
             else if (valueText.includes("رسوب") || valueText.includes("نفس") || valueText.includes("رياضيات") || key.includes("رسوب")) {
               statusClass = "class='value status-error'";
-            }
-            // 4. الإبقاء على الحالة الافتراضية للناجح والدرجات العادية (باللون الأبيض الطبيعي)
-            else if (valueText.includes("ناجح")) {
-              statusClass = "class='value'"; 
             }
 
             html += `
@@ -408,16 +399,16 @@
               </div>
             `;
 
-            // إذا انتهى سطر المجموع وتم التقاط الرقم بنجاح، ندرج النسبة المئوية فوراً تحته
+            // إدراج سطر النسبة المئوية الذكي تحت خانة المجموع مباشرة (من 380)
             if (key.includes("المجموع") && totalScore !== null) {
-              let percentage = ((totalScore / 380) * 100).toFixed(2); // حساب النسبة وتقريبها لأقرب رقمين عشريين
+              let percentage = ((totalScore / 380) * 100).toFixed(2);
               html += `
                 <div class="result-item">
                   <span class="label">النسبة المئوية</span>
                   <span class="value percentage-style">${percentage}%</span>
                 </div>
               `;
-              totalScore = null; // تصفير المتغير للتأكيد
+              totalScore = null; 
             }
           }
           
