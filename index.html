@@ -5,29 +5,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>نتيجة الصف الأول الثانوي | مدرسة الشهيد حماده فهمي مباشر</title>
   
+  <!-- استدعاء خطوط Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;750;800&family=Noto+Kufi+Arabic:wght@700;800&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --primary: #7c3aed; 
+      /* لوحة ألوان السيبربانك نيون التكنولوجية */
+      --primary: #7c3aed; /* بنفسجي نيون */
       --primary-hover: #6d28d9;
-      --success: #06b6d4; 
+      --success: #06b6d4; /* سيان مضيء للحالات الناجحة */
       --success-glow: rgba(6, 182, 212, 0.4);
-      --error: #ff0055; 
+      --error: #ff0055; /* أحمر نيون فاقع للأخطاء */
       --error-glow: rgba(255, 0, 85, 0.4);
       --text-main: #ffffff;
       --text-muted: #94a3b8;
+      
+      /* تعريف الخطوط المخصصة */
       --font-main: 'Tajawal', 'Segoe UI', sans-serif;
       --font-title: 'GE SS Unique Bold', 'Noto Kufi Arabic', 'Tajawal', sans-serif;
     }
 
+    /* خلفية سيبربانك متحركة مليئة بالطاقة والحيوية */
     body {
       font-family: var(--font-main);
       background: linear-gradient(-45deg, #083344, #1e1b4b, #164e63, #020617);
       background-size: 400% 400%;
-      animation: gradientBG 12s ease infinite; 
+      animation: gradientBG 12s ease infinite; /* حركة أسرع قليلاً لتناسب طابع النيون */
       color: var(--text-main);
       margin: 0;
       padding: 20px;
@@ -45,6 +50,7 @@
       100% { background-position: 0% 50%; }
     }
 
+    /* كارت زجاجي مستقبلي مع توهج نيون بنفسجي محيطي */
     .container {
       background: rgba(15, 23, 42, 0.6);
       backdrop-filter: blur(20px);
@@ -52,24 +58,16 @@
       padding: 40px 30px 25px 30px;
       border-radius: 24px;
       border: 1px solid rgba(124, 58, 237, 0.2);
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(124, 58, 237, 0.25);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 
+                  0 0 30px rgba(124, 58, 237, 0.25);
       width: 100%;
       max-width: 480px;
       text-align: center;
       box-sizing: border-box;
       position: relative;
-      transition: all 0.5s ease-in-out;
     }
 
-    .fade-out {
-      opacity: 0;
-      display: none !important;
-    }
-
-    .search-section {
-      transition: all 0.4s ease;
-    }
-
+    /* منطقة الشعار */
     .logo-area {
       margin-bottom: 20px;
       animation: float 3s ease-in-out infinite;
@@ -82,7 +80,7 @@
       border-radius: 50%;
       background: #ffffff;
       padding: 6px;
-      border: 2px solid rgba(6, 182, 212, 0.4); 
+      border: 2px solid rgba(6, 182, 212, 0.4); /* إطار سيان مضيء */
       box-shadow: 0 0 25px rgba(6, 182, 212, 0.3);
     }
 
@@ -91,6 +89,7 @@
       50% { transform: translateY(-8px); }
     }
 
+    /* العنوان الرئيسي بخط متدرج بين السيان والأبيض المضيء */
     h1.school-title {
       font-family: var(--font-title);
       margin: 0 0 12px 0;
@@ -103,6 +102,7 @@
       filter: drop-shadow(0 2px 8px rgba(6, 182, 212, 0.4));
     }
 
+    /* العنوان الفرعي باللون الأزرق السماوي النيون */
     .class-subtitle {
       font-family: var(--font-main);
       font-size: 19px;
@@ -116,6 +116,7 @@
       margin-bottom: 20px;
     }
 
+    /* حقل إدخال مظلم وعميق مع توهج أزرق سيان عند الكتابة */
     input[type="text"] {
       font-family: var(--font-main);
       width: 100%;
@@ -138,7 +139,8 @@
       box-shadow: 0 0 20px rgba(6, 182, 212, 0.5);
     }
 
-    button#searchBtn {
+    /* زر بحث متدرج فائق الحداثة من السيان اللامع إلى البنفسجي النيون */
+    button {
       font-family: var(--font-main);
       width: 100%;
       background: linear-gradient(90deg, #06b6d4, #7c3aed);
@@ -153,21 +155,17 @@
       box-shadow: 0 4px 20px rgba(124, 58, 237, 0.4);
     }
 
-    button#searchBtn:hover:not(:disabled) {
+    button:hover {
       filter: brightness(1.2);
       box-shadow: 0 0 30px rgba(124, 58, 237, 0.7);
       transform: translateY(-2px);
     }
 
-    button#searchBtn:disabled {
-      background: #334155 !important;
-      color: #64748b !important;
-      cursor: not-allowed !important;
-      box-shadow: none !important;
-      transform: none !important;
-      filter: none !important;
+    button:active {
+      transform: translateY(1px);
     }
 
+    /* مؤشر تحميل مضيء باللون البنفسجي الساخر */
     .loading-spinner {
       display: none;
       margin: 25px auto 0 auto;
@@ -190,45 +188,44 @@
       font-weight: 600;
       font-size: 15px;
       text-shadow: 0 2px 8px rgba(0,0,0,0.5);
-      line-height: 1.6;
     }
 
     #resultBox {
+      margin-top: 30px;
       text-align: right;
       display: none;
-      animation: slideUp 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      animation: slideUp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
     @keyframes slideUp {
-      from { opacity: 0; transform: translateY(30px); }
+      from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
+    /* كارت نتيجة شديد التباين بطابع سيبربانك داكن */
     .result-card {
       background: rgba(2, 6, 17, 0.7);
       border-radius: 16px;
-      padding: 25px 20px;
-      border: 1px solid rgba(6, 182, 212, 0.25);
+      padding: 20px;
+      border: 1px solid rgba(6, 182, 212, 0.2);
       box-shadow: inset 0 0 20px rgba(6, 182, 212, 0.05);
     }
 
     .result-title {
       text-align: center;
-      font-size: 20px;
-      font-weight: 800;
-      margin-bottom: 20px;
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 15px;
       color: #22d3ee;
       text-shadow: 0 0 10px rgba(34, 211, 238, 0.4);
-      border-bottom: 2px dashed rgba(6, 182, 212, 0.2);
-      padding-bottom: 12px;
     }
 
     .result-item {
       display: flex;
       justify-content: space-between;
-      padding: 14px 8px;
+      padding: 12px 8px;
       border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-      font-size: 16px;
+      font-size: 15px;
     }
 
     .result-item span.label {
@@ -239,10 +236,12 @@
     .result-item span.value {
       color: #ffffff;
       font-weight: 700;
+      text-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
     }
 
+    /* تلوين نيون مخصص للحالات التفاعلية */
     .status-success {
-      color: #22d3ee !important; 
+      color: #22d3ee !important; /* لون مبهج وناجح سيان */
       text-shadow: 0 0 12px rgba(34, 211, 238, 0.6) !important;
     }
 
@@ -251,36 +250,17 @@
       text-shadow: 0 0 12px var(--error-glow) !important;
     }
 
+    /* سطر مخصص للنسبة المئوية يظهر بلون وردي نيون فاقع ومبهر جداً */
     .percentage-style {
       color: #f472b6 !important;
       text-shadow: 0 0 15px rgba(244, 114, 182, 0.7) !important;
     }
 
-    .back-btn {
-      font-family: var(--font-main);
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      color: var(--text-muted);
-      padding: 10px 20px;
-      font-size: 14px;
-      font-weight: 600;
-      border-radius: 10px;
-      cursor: pointer;
-      margin-top: 20px;
-      width: 100%;
-      transition: all 0.3s ease;
-    }
-
-    .back-btn:hover {
-      background: rgba(124, 58, 237, 0.2);
-      border-color: var(--primary);
-      color: #ffffff;
-    }
-
+    /* توقيع المطور البرمجي الاحترافي */
     .credits {
       margin-top: 30px;
       font-size: 10px;
-      color: rgba(6, 182, 212, 0.3); 
+      color: rgba(6, 182, 212, 0.3); /* توهج خفيف للحقوق */
       letter-spacing: 1px;
       font-family: 'Consolas', 'Courier New', monospace;
       text-align: left;
@@ -291,18 +271,18 @@
 <body>
 
 <div class="container">
-  
-  <div id="searchSection" class="search-section">
-    <div class="logo-area">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRef5idcLoAv_1MLhlacUkSOZUGm1HBSSL4PA&s" alt="شعار المدرسة" class="logo-img">
-    </div>
-    <h1 class="school-title">مدرسة الشهيد ملازم أول حماده فهمي مباشر الثانوية المشتركة</h1>
-    <div class="class-subtitle">نتيجة الصف الأول الثانوي</div>
-    <div class="input-group">
-      <input type="text" id="seatNumber" placeholder="اكتب رقم الجلوس هنا..." autocomplete="off">
-    </div>
-    <button id="searchBtn">استعلام عن النتيجة</button>
+  <div class="logo-area">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRef5idcLoAv_1MLhlacUkSOZUGm1HBSSL4PA&s" alt="شعار المدرسة" class="logo-img">
   </div>
+  
+  <h1 class="school-title">مدرسة الشهيد ملازم أول حماده فهمي مباشر الثانوية المشتركة</h1>
+  <div class="class-subtitle">نتيجة الصف الأول الثانوي</div>
+  
+  <div class="input-group">
+    <input type="text" id="seatNumber" placeholder="اكتب رقم الجلوس هنا..." autocomplete="off">
+  </div>
+  
+  <button id="searchBtn">استعلام عن النتيجة</button>
   
   <div id="loading" class="loading-spinner"></div>
   <div id="msgBox"></div>
@@ -312,7 +292,6 @@
       <div class="result-title">🎉 بيان درجات الطالب 🎉</div>
       <div id="resultCard"></div>
     </div>
-    <button class="back-btn" id="backBtn">🔍 استعلام عن رقم آخر</button>
   </div>
 
   <div class="credits">&lt;/&gt; MOo_7_SeN</div>
@@ -320,90 +299,19 @@
 
 <script>
   const API_URL = "https://script.google.com/macros/s/AKfycbx00I2C8ggJbaOsqN2PSzjrNBPw8jMePctm3heA62u1_bgWcow72IjHUhqeBHcJR5wZ/exec";
-  
-  const MAX_ATTEMPTS = 3;
-  const LOCK_TIME_MS = 60 * 60 * 1000; // ساعة كاملة بالمللي ثانية
-  let countdownInterval = null;
-
-  // دالة فحص وتحديث حالة الحظر الصارمة
-  function enforceLockStatus() {
-    const searchBtn = document.getElementById("searchBtn");
-    const msgBox = document.getElementById("msgBox");
-    const seatInput = document.getElementById("seatNumber");
-    
-    const lockTimestamp = localStorage.getItem("lockTimestamp");
-    
-    if (lockTimestamp) {
-      const remainingTime = parseInt(lockTimestamp) - Date.now();
-      
-      if (remainingTime > 0) {
-        searchBtn.disabled = true;
-        seatInput.disabled = true;
-        startCountdown(remainingTime);
-        return true; // محظور حالياً
-      } else {
-        // انتهى وقت الحظر بنجاح
-        localStorage.removeItem("lockTimestamp");
-        localStorage.setItem("searchAttempts", "0");
-        searchBtn.disabled = false;
-        seatInput.disabled = false;
-        msgBox.innerHTML = "";
-        clearInterval(countdownInterval);
-      }
-    }
-    return false; // ليس محظوراً
-  }
-
-  function startCountdown(duration) {
-    const msgBox = document.getElementById("msgBox");
-    clearInterval(countdownInterval);
-    
-    function updateTimer() {
-      const now = Date.now();
-      const lockTimestamp = parseInt(localStorage.getItem("lockTimestamp") || "0");
-      const remaining = lockTimestamp - now;
-      
-      if (remaining <= 0) {
-        clearInterval(countdownInterval);
-        localStorage.removeItem("lockTimestamp");
-        localStorage.setItem("searchAttempts", "0");
-        document.getElementById("searchBtn").disabled = false;
-        document.getElementById("seatNumber").disabled = false;
-        msgBox.innerHTML = "✅ انتهى وقت الانتظار، يمكنك البحث الآن.";
-        msgBox.style.color = "#06b6d4";
-        return;
-      }
-      
-      const minutes = Math.floor((remaining % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((remaining % (1000 * 60)) / 1000);
-      
-      msgBox.style.color = "var(--error)";
-      msgBox.innerHTML = `⚠️ لقد استنفدت محاولاتك (3 مرات).<br>يرجى الانتظار ${minutes} دقيقة و ${seconds} ثانية لإعادة المحاولة.`;
-    }
-    
-    updateTimer();
-    countdownInterval = setInterval(updateTimer, 1000);
-  }
-
-  // فحص الحالة فوراً عند فتح الصفحة
-  enforceLockStatus();
 
   document.getElementById("seatNumber").addEventListener("input", function(e) {
     this.value = this.value.replace(/[^0-9]/g, '');
   });
 
   document.getElementById("seatNumber").addEventListener("keypress", function(e) {
-    if (e.key === "Enter" && !document.getElementById("searchBtn").disabled) {
+    if (e.key === "Enter") {
       document.getElementById("searchBtn").click();
     }
   });
 
   document.getElementById("searchBtn").addEventListener("click", function() {
-    // 1. فحص الحظر أولاً
-    if (enforceLockStatus()) return;
-
     const seatNum = document.getElementById("seatNumber").value.trim();
-    const searchSection = document.getElementById("searchSection");
     const loading = document.getElementById("loading");
     const msgBox = document.getElementById("msgBox");
     const resultBox = document.getElementById("resultBox");
@@ -414,19 +322,9 @@
       msgBox.innerHTML = "⚠️ برجاء كتابة رقم الجلوس أولاً!";
       return;
     }
-
-    // 2. تسجيل محاولة جديدة فوراً عند الضغط الصحيح للزر
-    let attempts = parseInt(localStorage.getItem("searchAttempts") || "0");
-    attempts++;
-    localStorage.setItem("searchAttempts", attempts.toString());
-
-    // 3. إذا وصل للحد الأقصى، نقفل ونحظر فوراً
-    if (attempts >= MAX_ATTEMPTS) {
-      const unlockTime = Date.now() + LOCK_TIME_MS;
-      localStorage.setItem("lockTimestamp", unlockTime.toString());
-    }
     
     msgBox.innerHTML = "";
+    resultBox.style.display = "none";
     loading.style.display = "block";
     
     fetch(API_URL + "?id=" + encodeURIComponent(seatNum))
@@ -440,8 +338,6 @@
         if (text.trim().startsWith("<!DOCTYPE") || text.trim().startsWith("<html")) {
           msgBox.style.color = "var(--error)";
           msgBox.innerHTML = "❌ خطأ في إعدادات الوصول. تأكد من ضبط الصلاحية على Anyone.";
-          // حتى لو فشل الاتصال بسبب الصلاحية، المحاولة تُحسب لحماية السيرفر
-          enforceLockStatus();
           return;
         }
 
@@ -451,7 +347,6 @@
         } catch(e) {
           msgBox.style.color = "var(--error)";
           msgBox.innerHTML = "❌ خطأ في معالجة البيانات القادمة من السيرفر.";
-          enforceLockStatus();
           return;
         }
         
@@ -499,36 +394,20 @@
             }
           }
           
-          searchSection.classList.add("fade-out"); 
-          msgBox.innerHTML = ""; 
-          
           resultCard.innerHTML = html;
           resultBox.style.display = "block";
+          msgBox.style.color = "var(--success)";
+          msgBox.innerHTML = "✨ مبروك! ظهرت النتيجة الآن.. نتمنى لك التوفيق والنجاح 🎉";
         } else {
           msgBox.style.color = "var(--error)";
           msgBox.innerHTML = "🔍 عذراً، لم نجد أي نتيجة مرتبطة برقم الجلوس هذا.";
-          // فحص وتطبيق الحظر حتى لو لم يجد نتيجة
-          enforceLockStatus();
         }
       })
       .catch(err => {
         loading.style.display = "none";
         msgBox.style.color = "var(--error)";
         msgBox.innerHTML = "📡 فشل الاتصال بالسيرفر، تحقق من الإنترنت أو الرابط.";
-        enforceLockStatus();
       });
-  });
-
-  document.getElementById("backBtn").addEventListener("click", function() {
-    // إرجاع واجهة البحث
-    document.getElementById("searchSection").classList.remove("fade-out");
-    document.getElementById("resultBox").style.display = "none";
-    
-    // فحص صارم: لو المحاولات خلصت أثناء قراءته للنتيجة، سيجد خانة البحث مقفلة والمؤقت يعمل
-    if (!enforceLockStatus()) {
-      document.getElementById("seatNumber").value = ""; 
-      document.getElementById("seatNumber").focus();
-    }
   });
 </script>
 </body>
