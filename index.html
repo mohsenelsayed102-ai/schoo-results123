@@ -391,13 +391,13 @@
               }
             }
 
-            if (valueText.includes("غائب") || valueText.includes("غ")) {
+            if (valueText.includes("غائب") || valueText.includes("غايب")) {
               statusClass = "class='value status-error'";
             }
             else if (valueText.includes("ناقل") || valueText.includes("منقول")) {
               statusClass = "class='value status-success'";
             }
-            else if (valueText.includes("رسوب") || valueText.includes("نفس") || valueText.includes("رياضيات") || key.includes("رسوب")) {
+            else if (valueText.includes("رسوب") || valueText.includes("راسب") || valueText.includes("ربع") || key.includes("رسوب")) {
               statusClass = "class='value status-error'";
             }
 
@@ -445,6 +445,6 @@
     document.getElementById("seatNumber").value = ""; // تنظيف الخانة لبحث جديد
     document.getElementById("seatNumber").focus();
   });
-    </script>
+</script>
 </body>
 </html>
