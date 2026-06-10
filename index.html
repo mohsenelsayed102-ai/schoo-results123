@@ -13,26 +13,25 @@
   <style>
     :root {
       /* لوحة ألوان السيبربانك نيون التكنولوجية */
-      --primary: #7c3aed; /* بنفسجي نيون */
+      --primary: #7c3aed; 
       --primary-hover: #6d28d9;
-      --success: #06b6d4; /* سيان مضيء للحالات الناجحة */
+      --success: #06b6d4; 
       --success-glow: rgba(6, 182, 212, 0.4);
-      --error: #ff0055; /* أحمر نيون فاقع للأخطاء */
+      --error: #ff0055; 
       --error-glow: rgba(255, 0, 85, 0.4);
       --text-main: #ffffff;
       --text-muted: #94a3b8;
       
-      /* تعريف الخطوط المخصصة */
       --font-main: 'Tajawal', 'Segoe UI', sans-serif;
       --font-title: 'GE SS Unique Bold', 'Noto Kufi Arabic', 'Tajawal', sans-serif;
     }
 
-    /* خلفية سيبربانك متحركة مليئة بالطاقة والحيوية */
+    /* خلفية سيبربانك متحركة */
     body {
       font-family: var(--font-main);
       background: linear-gradient(-45deg, #083344, #1e1b4b, #164e63, #020617);
       background-size: 400% 400%;
-      animation: gradientBG 12s ease infinite; /* حركة أسرع قليلاً لتناسب طابع النيون */
+      animation: gradientBG 12s ease infinite; 
       color: var(--text-main);
       margin: 0;
       padding: 20px;
@@ -50,7 +49,7 @@
       100% { background-position: 0% 50%; }
     }
 
-    /* كارت زجاجي مستقبلي مع توهج نيون بنفسجي محيطي */
+    /* كارت حاوي زجاجي مستقبلي */
     .container {
       background: rgba(15, 23, 42, 0.6);
       backdrop-filter: blur(20px);
@@ -65,9 +64,20 @@
       text-align: center;
       box-sizing: border-box;
       position: relative;
+      transition: all 0.5s ease-in-out;
     }
 
-    /* منطقة الشعار */
+    /* تأثيرات الاختفاء والظهور السلس */
+    .fade-out {
+      opacity: 0;
+      display: none !important;
+    }
+
+    /* منطقة الشعار والعناوين والمدخلات */
+    .search-section {
+      transition: all 0.4s ease;
+    }
+
     .logo-area {
       margin-bottom: 20px;
       animation: float 3s ease-in-out infinite;
@@ -80,7 +90,7 @@
       border-radius: 50%;
       background: #ffffff;
       padding: 6px;
-      border: 2px solid rgba(6, 182, 212, 0.4); /* إطار سيان مضيء */
+      border: 2px solid rgba(6, 182, 212, 0.4); 
       box-shadow: 0 0 25px rgba(6, 182, 212, 0.3);
     }
 
@@ -89,7 +99,6 @@
       50% { transform: translateY(-8px); }
     }
 
-    /* العنوان الرئيسي بخط متدرج بين السيان والأبيض المضيء */
     h1.school-title {
       font-family: var(--font-title);
       margin: 0 0 12px 0;
@@ -102,7 +111,6 @@
       filter: drop-shadow(0 2px 8px rgba(6, 182, 212, 0.4));
     }
 
-    /* العنوان الفرعي باللون الأزرق السماوي النيون */
     .class-subtitle {
       font-family: var(--font-main);
       font-size: 19px;
@@ -116,7 +124,6 @@
       margin-bottom: 20px;
     }
 
-    /* حقل إدخال مظلم وعميق مع توهج أزرق سيان عند الكتابة */
     input[type="text"] {
       font-family: var(--font-main);
       width: 100%;
@@ -139,8 +146,7 @@
       box-shadow: 0 0 20px rgba(6, 182, 212, 0.5);
     }
 
-    /* زر بحث متدرج فائق الحداثة من السيان اللامع إلى البنفسجي النيون */
-    button {
+    button#searchBtn {
       font-family: var(--font-main);
       width: 100%;
       background: linear-gradient(90deg, #06b6d4, #7c3aed);
@@ -155,17 +161,13 @@
       box-shadow: 0 4px 20px rgba(124, 58, 237, 0.4);
     }
 
-    button:hover {
+    button#searchBtn:hover {
       filter: brightness(1.2);
       box-shadow: 0 0 30px rgba(124, 58, 237, 0.7);
       transform: translateY(-2px);
     }
 
-    button:active {
-      transform: translateY(1px);
-    }
-
-    /* مؤشر تحميل مضيء باللون البنفسجي الساخر */
+    /* مؤشر تحميل مضيء */
     .loading-spinner {
       display: none;
       margin: 25px auto 0 auto;
@@ -190,42 +192,43 @@
       text-shadow: 0 2px 8px rgba(0,0,0,0.5);
     }
 
+    /* منطقة عرض النتيجة فقط */
     #resultBox {
-      margin-top: 30px;
       text-align: right;
       display: none;
-      animation: slideUp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      animation: slideUp 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
     @keyframes slideUp {
-      from { opacity: 0; transform: translateY(20px); }
+      from { opacity: 0; transform: translateY(30px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* كارت نتيجة شديد التباين بطابع سيبربانك داكن */
     .result-card {
       background: rgba(2, 6, 17, 0.7);
       border-radius: 16px;
-      padding: 20px;
-      border: 1px solid rgba(6, 182, 212, 0.2);
+      padding: 25px 20px;
+      border: 1px solid rgba(6, 182, 212, 0.25);
       box-shadow: inset 0 0 20px rgba(6, 182, 212, 0.05);
     }
 
     .result-title {
       text-align: center;
-      font-size: 18px;
-      font-weight: 700;
-      margin-bottom: 15px;
+      font-size: 20px;
+      font-weight: 800;
+      margin-bottom: 20px;
       color: #22d3ee;
       text-shadow: 0 0 10px rgba(34, 211, 238, 0.4);
+      border-bottom: 2px dashed rgba(6, 182, 212, 0.2);
+      padding-bottom: 12px;
     }
 
     .result-item {
       display: flex;
       justify-content: space-between;
-      padding: 12px 8px;
+      padding: 14px 8px;
       border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-      font-size: 15px;
+      font-size: 16px;
     }
 
     .result-item span.label {
@@ -236,12 +239,10 @@
     .result-item span.value {
       color: #ffffff;
       font-weight: 700;
-      text-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
     }
 
-    /* تلوين نيون مخصص للحالات التفاعلية */
     .status-success {
-      color: #22d3ee !important; /* لون مبهج وناجح سيان */
+      color: #22d3ee !important; 
       text-shadow: 0 0 12px rgba(34, 211, 238, 0.6) !important;
     }
 
@@ -250,17 +251,37 @@
       text-shadow: 0 0 12px var(--error-glow) !important;
     }
 
-    /* سطر مخصص للنسبة المئوية يظهر بلون وردي نيون فاقع ومبهر جداً */
     .percentage-style {
       color: #f472b6 !important;
       text-shadow: 0 0 15px rgba(244, 114, 182, 0.7) !important;
     }
 
-    /* توقيع المطور البرمجي الاحترافي */
+    /* زر "بحث جديد" الأنيق للعودة عند الحاجة */
+    .back-btn {
+      font-family: var(--font-main);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--text-muted);
+      padding: 10px 20px;
+      font-size: 14px;
+      font-weight: 600;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-top: 20px;
+      width: 100%;
+      transition: all 0.3s ease;
+    }
+
+    .back-btn:hover {
+      background: rgba(124, 58, 237, 0.2);
+      border-color: var(--primary);
+      color: #ffffff;
+    }
+
     .credits {
       margin-top: 30px;
       font-size: 10px;
-      color: rgba(6, 182, 212, 0.3); /* توهج خفيف للحقوق */
+      color: rgba(6, 182, 212, 0.3); 
       letter-spacing: 1px;
       font-family: 'Consolas', 'Courier New', monospace;
       text-align: left;
@@ -271,27 +292,32 @@
 <body>
 
 <div class="container">
-  <div class="logo-area">
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRef5idcLoAv_1MLhlacUkSOZUGm1HBSSL4PA&s" alt="شعار المدرسة" class="logo-img">
+  
+  <!-- قسم البحث بالكامل (سيختفي فور العثور على النتيجة) -->
+  <div id="searchSection" class="search-section">
+    <div class="logo-area">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRef5idcLoAv_1MLhlacUkSOZUGm1HBSSL4PA&s" alt="شعار المدرسة" class="logo-img">
+    </div>
+    <h1 class="school-title">مدرسة الشهيد ملازم أول حماده فهمي مباشر الثانوية المشتركة</h1>
+    <div class="class-subtitle">نتيجة الصف الأول الثانوي</div>
+    <div class="input-group">
+      <input type="text" id="seatNumber" placeholder="اكتب رقم الجلوس هنا..." autocomplete="off">
+    </div>
+    <button id="searchBtn">استعلام عن النتيجة</button>
   </div>
   
-  <h1 class="school-title">مدرسة الشهيد ملازم أول حماده فهمي مباشر الثانوية المشتركة</h1>
-  <div class="class-subtitle">نتيجة الصف الأول الثانوي</div>
-  
-  <div class="input-group">
-    <input type="text" id="seatNumber" placeholder="اكتب رقم الجلوس هنا..." autocomplete="off">
-  </div>
-  
-  <button id="searchBtn">استعلام عن النتيجة</button>
-  
+  <!-- مؤشر التحميل وصندوق رسائل الأخطاء -->
   <div id="loading" class="loading-spinner"></div>
   <div id="msgBox"></div>
   
+  <!-- قسم عرض النتيجة فقط (سيظهر بمفرده) -->
   <div id="resultBox">
     <div class="result-card">
       <div class="result-title">🎉 بيان درجات الطالب 🎉</div>
       <div id="resultCard"></div>
     </div>
+    <!-- زر ذكي للعودة للبحث مجدداً دون تحديث الصفحة -->
+    <button class="back-btn" id="backBtn">🔍 استعلام عن رقم آخر</button>
   </div>
 
   <div class="credits">&lt;/&gt; MOo_7_SeN</div>
@@ -312,6 +338,7 @@
 
   document.getElementById("searchBtn").addEventListener("click", function() {
     const seatNum = document.getElementById("seatNumber").value.trim();
+    const searchSection = document.getElementById("searchSection");
     const loading = document.getElementById("loading");
     const msgBox = document.getElementById("msgBox");
     const resultBox = document.getElementById("resultBox");
@@ -324,7 +351,6 @@
     }
     
     msgBox.innerHTML = "";
-    resultBox.style.display = "none";
     loading.style.display = "block";
     
     fetch(API_URL + "?id=" + encodeURIComponent(seatNum))
@@ -394,10 +420,12 @@
             }
           }
           
+          // 🔥 السحر هنا: إخفاء قسم البحث بالكامل وإظهار النتيجة فقط
+          searchSection.classList.add("fade-out"); 
+          msgBox.innerHTML = ""; 
+          
           resultCard.innerHTML = html;
           resultBox.style.display = "block";
-          msgBox.style.color = "var(--success)";
-          msgBox.innerHTML = "✨ مبروك! ظهرت النتيجة الآن.. نتمنى لك التوفيق والنجاح 🎉";
         } else {
           msgBox.style.color = "var(--error)";
           msgBox.innerHTML = "🔍 عذراً، لم نجد أي نتيجة مرتبطة برقم الجلوس هذا.";
@@ -408,6 +436,14 @@
         msgBox.style.color = "var(--error)";
         msgBox.innerHTML = "📡 فشل الاتصال بالسيرفر، تحقق من الإنترنت أو الرابط.";
       });
+  });
+
+  // تفعيل عمل زر "استعلام عن رقم آخر" لإعادة إظهار صندوق البحث
+  document.getElementById("backBtn").addEventListener("click", function() {
+    document.getElementById("searchSection").classList.remove("fade-out");
+    document.getElementById("resultBox").style.display = "none";
+    document.getElementById("seatNumber").value = ""; // تنظيف الخانة لبحث جديد
+    document.getElementById("seatNumber").focus();
   });
 </script>
 </body>
