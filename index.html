@@ -6,19 +6,21 @@
   <title>بوابة استعلام نتائج الطلاب</title>
   <style>
     :root {
-      --primary: #4f46e5;
-      --primary-hover: #4338ca;
-      --background: #f8fafc;
-      --card-bg: #ffffff;
-      --text-main: #1e293b;
-      --text-muted: #64748b;
+      --primary: #6366f1;
+      --primary-hover: #4f46e5;
       --success: #10b981;
-      --error: #ef4444;
+      --success-glow: rgba(16, 185, 129, 0.3);
+      --error: #f43f5e;
+      --text-main: #ffffff;
+      --text-muted: #cbd5e1;
     }
 
+    /* خلفية متحركة بألوان متدرجة ومبهجة */
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: var(--background);
+      background: linear-gradient(-45deg, #0f172a, #1e1b4b, #2e1065, #3b0764);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
       color: var(--text-main);
       margin: 0;
       padding: 0;
@@ -26,94 +28,123 @@
       justify-content: center;
       align-items: center;
       min-height: 100vh;
+      overflow-x: hidden;
     }
 
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* الكارت الرئيسي بتأثير زجاجي مضيء */
     .container {
-      background: var(--card-bg);
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       padding: 40px 30px;
-      border-radius: 20px;
-      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+      border-radius: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3), 
+                  0 0 40px rgba(99, 102, 241, 0.1);
       width: 100%;
       max-width: 480px;
       text-align: center;
       box-sizing: border-box;
-      border: 1px solid #e2e8f0;
+      position: relative;
     }
 
     .logo-area {
-      font-size: 48px;
-      margin-bottom: 10px;
+      font-size: 55px;
+      margin-bottom: 15px;
+      animation: float 3s ease-in-out infinite;
+      filter: drop-shadow(0 0 15px rgba(99, 102, 241, 0.6));
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
     }
 
     h2 {
       margin: 0 0 10px 0;
-      color: var(--text-main);
-      font-size: 24px;
-      font-weight: 700;
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      background: linear-gradient(to left, #6366f1, #a855f7, #ec4899);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 2px 8px rgba(168, 85, 247, 0.3));
     }
 
     p.subtitle {
       color: var(--text-muted);
-      margin: 0 0 30px 0;
+      margin: 0 0 35px 0;
       font-size: 15px;
     }
 
     .input-group {
-      position: relative;
-      margin-bottom: 20px;
+      margin-bottom: 25px;
     }
 
+    /* حقل إدخال مضيء وتفاعلي */
     input[type="text"] {
       width: 100%;
-      padding: 14px 20px;
+      padding: 16px 20px;
       box-sizing: border-box;
-      border: 2px solid #e2e8f0;
-      border-radius: 12px;
-      font-size: 16px;
+      background: rgba(0, 0, 0, 0.2);
+      border: 2px solid rgba(255, 255, 255, 0.1);
+      border-radius: 14px;
+      font-size: 18px;
       text-align: center;
       transition: all 0.3s ease;
-      color: var(--text-main);
+      color: #ffffff;
       font-weight: 600;
     }
 
     input[type="text"]:focus {
       outline: none;
       border-color: var(--primary);
-      box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
+      background: rgba(0, 0, 0, 0.4);
+      box-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
     }
 
+    /* زر بحث قوي وله توهج عند المرور فوقه */
     button {
       width: 100%;
-      background-color: var(--primary);
+      background: linear-gradient(90deg, #6366f1, #a855f7);
       color: white;
       border: none;
-      padding: 14px;
+      padding: 16px;
       font-size: 16px;
-      font-weight: 600;
-      border-radius: 12px;
+      font-weight: 700;
+      border-radius: 14px;
       cursor: pointer;
-      transition: all 0.2s ease;
-      box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.2);
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(168, 85, 247, 0.4);
     }
 
     button:hover {
-      background-color: var(--primary-hover);
-      transform: translateY(-1px);
+      filter: brightness(1.1);
+      box-shadow: 0 0 25px rgba(168, 85, 247, 0.7);
+      transform: translateY(-2px);
     }
 
     button:active {
       transform: translateY(1px);
     }
 
+    /* مؤشر تحميل مضيء */
     .loading-spinner {
       display: none;
-      margin: 20px auto 0 auto;
-      border: 4px solid #f3f3f3;
-      border-top: 4px solid var(--primary);
+      margin: 25px auto 0 auto;
+      border: 4px solid rgba(255, 255, 255, 0.1);
+      border-top: 4px solid #a855f7;
       border-radius: 50%;
-      width: 30px;
-      height: 30px;
+      width: 35px;
+      height: 35px;
       animation: spin 1s linear infinite;
+      filter: drop-shadow(0 0 10px #a855f7);
     }
 
     @keyframes spin {
@@ -122,36 +153,54 @@
     }
 
     #msgBox {
-      margin-top: 20px;
+      margin-top: 25px;
       font-weight: 600;
       font-size: 15px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.2);
     }
 
     #resultBox {
       margin-top: 30px;
       text-align: right;
       display: none;
-      animation: fadeIn 0.4s ease;
+      animation: slideUp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
+    /* كارت النتيجة المضيء والمقسم بشكل رائع */
     .result-card {
-      background: #f8fafc;
-      border-radius: 12px;
-      padding: 15px;
-      border: 1px solid #edf2f7;
+      background: rgba(0, 0, 0, 0.35);
+      border-radius: 16px;
+      padding: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.05);
+    }
+
+    .result-title {
+      text-align: center;
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 15px;
+      color: var(--success);
+      text-shadow: 0 0 10px var(--success-glow);
     }
 
     .result-item {
       display: flex;
       justify-content: space-between;
-      padding: 10px 5px;
-      border-bottom: 1px solid #e2e8f0;
+      padding: 12px 8px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
       font-size: 15px;
+      transition: background 0.2s ease;
+    }
+
+    .result-item:hover {
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: 6px;
     }
 
     .result-item:last-child {
@@ -164,20 +213,27 @@
     }
 
     .result-item span.value {
-      color: var(--text-main);
+      color: #ffffff;
       font-weight: 700;
+      text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+    }
+    
+    /* تمييز المواد أو الدرجات بتوهج خفيف */
+    .result-item:nth-child(even) span.value {
+      color: #38bdf8;
+      text-shadow: 0 0 8px rgba(56, 189, 248, 0.5);
     }
   </style>
 </head>
 <body>
 
 <div class="container">
-  <div class="logo-area">🎓</div>
-  <h2>منصة نتائج الطلاب</h2>
-  <p class="subtitle">أدخل رقم الجلوس الخاص بك للحصول على الدرجات فوراً</p>
+  <div class="logo-area">✨</div>
+  <h2>بوابة نتائج الطلاب</h2>
+  <p class="subtitle">أدخل رقم الجلوس للاستعلام عن النتيجة بالدرجات</p>
   
   <div class="input-group">
-    <input type="text" id="seatNumber" placeholder="مثال: 1024" autocomplete="off">
+    <input type="text" id="seatNumber" placeholder="اكتب رقم الجلوس هنا..." autocomplete="off">
   </div>
   
   <button id="searchBtn">استعلام عن النتيجة</button>
@@ -186,13 +242,16 @@
   <div id="msgBox"></div>
   
   <div id="resultBox">
-    <div class="result-card" id="resultCard">
-      </div>
+    <div class="result-card">
+      <div class="result-title">🎉 بيان درجات الطالب 🎉</div>
+      <div id="resultCard">
+        </div>
+    </div>
   </div>
 </div>
 
 <script>
-  // ⚠️ ضع هنا رابط جوجل شيت الطويل المستخرج من الـ Web App (الذي ينتهي بـ /exec)
+  // ⚠️ ضع هنا رابط جوجل شيت الطويل الخاص بك الذي ينتهي بـ /exec
   const API_URL = "https://script.google.com/macros/s/AKfycbx00I2C8ggJbaOsqN2PSzjrNBPw8jMePctm3heA62u1_bgWcow72IjHUhqeBHcJR5wZ/exec";
 
   document.getElementById("searchBtn").addEventListener("click", function() {
@@ -208,24 +267,21 @@
       return;
     }
     
-    // إعادة تهيئة الواجهة
     msgBox.innerHTML = "";
     resultBox.style.display = "none";
     loading.style.display = "block";
     
-    // بدء جلب البيانات
     fetch(API_URL + "?id=" + encodeURIComponent(seatNum))
       .then(response => {
-        if (!response.ok) throw new Error("السيرفر لا يستجيب بشكل صحيح.");
-        return response.text(); // نستقبل النص أولاً لفحصه
+        if (!response.ok) throw new Error();
+        return response.text();
       })
       .then(text => {
         loading.style.display = "none";
         
-        // فحص ما إذا كان المستلم هو كود مكسور أو صفحة خطأ وليس JSON
         if (text.trim().startsWith("<!DOCTYPE") || text.trim().startsWith("<html")) {
           msgBox.style.color = "var(--error)";
-          msgBox.innerHTML = "❌ خطأ: الرابط المستخدم لا يعود ببيانات. تأكد من إعداد الصلاحيات Anyone في جوجل شيت.";
+          msgBox.innerHTML = "❌ خطأ في إعدادات الوصول. تأكد من ضبط الصلاحية على Anyone.";
           return;
         }
 
@@ -234,7 +290,7 @@
           data = JSON.parse(text);
         } catch(e) {
           msgBox.style.color = "var(--error)";
-          msgBox.innerHTML = "❌ خطأ في معالجة البيانات القادمة من جوجل.";
+          msgBox.innerHTML = "❌ خطأ في معالجة البيانات القادمة من السيرفر.";
           return;
         }
         
@@ -251,19 +307,18 @@
           resultCard.innerHTML = html;
           resultBox.style.display = "block";
           msgBox.style.color = "var(--success)";
-          msgBox.innerHTML = "✨ تم جلب النتيجة بنجاح";
+          msgBox.innerHTML = "🔮 تم جلب النتيجة بنجاح!";
         } else {
           msgBox.style.color = "var(--error)";
-          msgBox.innerHTML = "🔍 عذراً، لم يتم العثور على نتيجة لرقم الجلوس هذا.";
+          msgBox.innerHTML = "🔍 عذراً، لم نجد أي نتيجة مرتبطة برقم الجلوس هذا.";
         }
       })
       .catch(err => {
         loading.style.display = "none";
         msgBox.style.color = "var(--error)";
-        msgBox.innerHTML = "📡 خطأ في الاتصال بالإنترنت أو أن رابط السيرفر مكسور.";
-        console.error(err);
+        msgBox.innerHTML = "📡 فشل الاتصال بالسيرفر، تحقق من الإنترنت أو الرابط.";
       });
   });
-</script>
+  </script>
 </body>
 </html>
