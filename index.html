@@ -3,14 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>بوابة استعلام نتائج الطلاب</title>
+  <title>بوابة استعلام نتائج الطلاب | مدرسة الشهيد حماده فهمي مباشر</title>
   <style>
     :root {
       --primary: #6366f1;
       --primary-hover: #4f46e5;
       --success: #10b981;
-      --success-glow: rgba(16, 185, 129, 0.3);
+      --success-glow: rgba(16, 185, 129, 0.4);
       --error: #f43f5e;
+      --error-glow: rgba(244, 63, 94, 0.4);
       --text-main: #ffffff;
       --text-muted: #cbd5e1;
     }
@@ -23,12 +24,13 @@
       animation: gradientBG 15s ease infinite;
       color: var(--text-main);
       margin: 0;
-      padding: 0;
+      padding: 20px;
       display: flex;
       justify-content: center;
       align-items: center;
       min-height: 100vh;
       overflow-x: hidden;
+      box-sizing: border-box;
     }
 
     @keyframes gradientBG {
@@ -54,21 +56,31 @@
       position: relative;
     }
 
+    /* منطقة الشعار المحدثة باستخدام صورتك */
     .logo-area {
-      font-size: 55px;
-      margin-bottom: 15px;
+      margin-bottom: 20px;
       animation: float 3s ease-in-out infinite;
-      filter: drop-shadow(0 0 15px rgba(99, 102, 241, 0.6));
+    }
+
+    .logo-img {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 50%;
+      background: #ffffff;
+      padding: 4px;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.2), 0 0 35px rgba(168, 85, 247, 0.4);
     }
 
     @keyframes float {
       0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
+      50% { transform: translateY(-8px); }
     }
 
     h2 {
-      margin: 0 0 10px 0;
-      font-size: 26px;
+      margin: 0 0 5px 0;
+      font-size: 24px;
       font-weight: 800;
       letter-spacing: 0.5px;
       background: linear-gradient(to left, #6366f1, #a855f7, #ec4899);
@@ -77,14 +89,22 @@
       filter: drop-shadow(0 2px 8px rgba(168, 85, 247, 0.3));
     }
 
+    .school-name {
+      font-size: 14px;
+      color: #a855f7;
+      font-weight: 700;
+      margin-bottom: 15px;
+      text-shadow: 0 0 10px rgba(168, 85, 247, 0.3);
+    }
+
     p.subtitle {
       color: var(--text-muted);
-      margin: 0 0 35px 0;
-      font-size: 15px;
+      margin: 0 0 30px 0;
+      font-size: 14px;
     }
 
     .input-group {
-      margin-bottom: 25px;
+      margin-bottom: 20px;
     }
 
     /* حقل إدخال مضيء وتفاعلي */
@@ -185,8 +205,8 @@
       font-size: 18px;
       font-weight: 700;
       margin-bottom: 15px;
-      color: var(--success);
-      text-shadow: 0 0 10px var(--success-glow);
+      color: #38bdf8;
+      text-shadow: 0 0 10px rgba(56, 189, 248, 0.4);
     }
 
     .result-item {
@@ -218,18 +238,32 @@
       text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
     }
     
-    /* تمييز المواد أو الدرجات بتوهج خفيف */
     .result-item:nth-child(even) span.value {
       color: #38bdf8;
       text-shadow: 0 0 8px rgba(56, 189, 248, 0.5);
+    }
+
+    /* فئات مخصصة لتلوين حالة الطالب ديناميكياً */
+    .status-success {
+      color: var(--success) !important;
+      text-shadow: 0 0 12px var(--success-glow) !important;
+    }
+
+    .status-error {
+      color: var(--error) !important;
+      text-shadow: 0 0 12px var(--error-glow) !important;
     }
   </style>
 </head>
 <body>
 
 <div class="container">
-  <div class="logo-area">✨</div>
+  <!-- تم استبدال الرمز التعبيري بصورتك المرفوعة هنا -->
+  <div class="logo-area">
+    <img src="1000127664.jpg" alt="شعار المدرسة" class="logo-img">
+  </div>
   <h2>بوابة نتائج الطلاب</h2>
+  <div class="school-name">مدرسة الشهيد ملازم أول حماده فهمي مباشر الثانوية المشتركة</div>
   <p class="subtitle">أدخل رقم الجلوس للاستعلام عن النتيجة بالدرجات</p>
   
   <div class="input-group">
@@ -244,8 +278,7 @@
   <div id="resultBox">
     <div class="result-card">
       <div class="result-title">🎉 بيان درجات الطالب 🎉</div>
-      <div id="resultCard">
-        </div>
+      <div id="resultCard"></div>
     </div>
   </div>
 </div>
@@ -253,6 +286,18 @@
 <script>
   // ⚠️ ضع هنا رابط جوجل شيت الطويل الخاص بك الذي ينتهي بـ /exec
   const API_URL = "https://script.google.com/macros/s/AKfycbx00I2C8ggJbaOsqN2PSzjrNBPw8jMePctm3heA62u1_bgWcow72IjHUhqeBHcJR5wZ/exec";
+
+  // تحسين المدخلات: السماح بالأرقام فقط ومنع الحروف والمسافات
+  document.getElementById("seatNumber").addEventListener("input", function(e) {
+    this.value = this.value.replace(/[^0-9]/g, '');
+  });
+
+  // تشغيل البحث عند الضغط على زر Enter داخل حقل الإدخال
+  document.getElementById("seatNumber").addEventListener("keypress", function(e) {
+    if (e.key === "Enter") {
+      document.getElementById("searchBtn").click();
+    }
+  });
 
   document.getElementById("searchBtn").addEventListener("click", function() {
     const seatNum = document.getElementById("seatNumber").value.trim();
@@ -297,17 +342,33 @@
         if(data && Object.keys(data).length > 0) {
           let html = "";
           for (let key in data) {
+            let valueText = String(data[key]);
+            let statusClass = "";
+            
+            // تلوين ذكي لحالة الطالب بناءً على الكلمة
+            if (key.includes("حالة") || key.includes("النتيجة") || key.includes("الحالة")) {
+              if (valueText.includes("ناجح")) {
+                statusClass = "class='value status-success'";
+              } else if (valueText.includes("راسب") || valueText.includes("دور") || valueText.includes("ضعيف")) {
+                statusClass = "class='value status-error'";
+              } else {
+                statusClass = "class='value'";
+              }
+            } else {
+              statusClass = "class='value'";
+            }
+
             html += `
               <div class="result-item">
                 <span class="label">${key}</span>
-                <span class="value">${data[key]}</span>
+                <span ${statusClass}>${valueText}</span>
               </div>
             `;
           }
           resultCard.innerHTML = html;
           resultBox.style.display = "block";
           msgBox.style.color = "var(--success)";
-          msgBox.innerHTML = "🔮 تم جلب النتيجة بنجاح!";
+          msgBox.innerHTML = "نتيجة الظالب!";
         } else {
           msgBox.style.color = "var(--error)";
           msgBox.innerHTML = "🔍 عذراً، لم نجد أي نتيجة مرتبطة برقم الجلوس هذا.";
