@@ -5,14 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>نتيجة الصف الأول الثانوي | مدرسة الشهيد حماده فهمي مباشر</title>
   
-  <!-- استدعاء خطوط Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;750;800&family=Noto+Kufi+Arabic:wght@700;800&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      /* لوحة ألوان السيبربانك نيون التكنولوجية */
       --primary: #7c3aed; 
       --primary-hover: #6d28d9;
       --success: #06b6d4; 
@@ -21,12 +19,10 @@
       --error-glow: rgba(255, 0, 85, 0.4);
       --text-main: #ffffff;
       --text-muted: #94a3b8;
-      
       --font-main: 'Tajawal', 'Segoe UI', sans-serif;
       --font-title: 'GE SS Unique Bold', 'Noto Kufi Arabic', 'Tajawal', sans-serif;
     }
 
-    /* خلفية سيبربانك متحركة */
     body {
       font-family: var(--font-main);
       background: linear-gradient(-45deg, #083344, #1e1b4b, #164e63, #020617);
@@ -49,7 +45,6 @@
       100% { background-position: 0% 50%; }
     }
 
-    /* كارت حاوي زجاجي مستقبلي */
     .container {
       background: rgba(15, 23, 42, 0.6);
       backdrop-filter: blur(20px);
@@ -57,8 +52,7 @@
       padding: 40px 30px 25px 30px;
       border-radius: 24px;
       border: 1px solid rgba(124, 58, 237, 0.2);
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 
-                  0 0 30px rgba(124, 58, 237, 0.25);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(124, 58, 237, 0.25);
       width: 100%;
       max-width: 480px;
       text-align: center;
@@ -67,13 +61,11 @@
       transition: all 0.5s ease-in-out;
     }
 
-    /* تأثيرات الاختفاء والظهور السلس */
     .fade-out {
       opacity: 0;
       display: none !important;
     }
 
-    /* منطقة الشعار والعناوين والمدخلات */
     .search-section {
       transition: all 0.4s ease;
     }
@@ -161,13 +153,21 @@
       box-shadow: 0 4px 20px rgba(124, 58, 237, 0.4);
     }
 
-    button#searchBtn:hover {
+    button#searchBtn:hover:not(:disabled) {
       filter: brightness(1.2);
       box-shadow: 0 0 30px rgba(124, 58, 237, 0.7);
       transform: translateY(-2px);
     }
 
-    /* مؤشر تحميل مضيء */
+    button#searchBtn:disabled {
+      background: #334155 !important;
+      color: #64748b !important;
+      cursor: not-allowed !important;
+      box-shadow: none !important;
+      transform: none !important;
+      filter: none !important;
+    }
+
     .loading-spinner {
       display: none;
       margin: 25px auto 0 auto;
@@ -190,9 +190,9 @@
       font-weight: 600;
       font-size: 15px;
       text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+      line-height: 1.6;
     }
 
-    /* منطقة عرض النتيجة فقط */
     #resultBox {
       text-align: right;
       display: none;
@@ -256,7 +256,6 @@
       text-shadow: 0 0 15px rgba(244, 114, 182, 0.7) !important;
     }
 
-    /* زر "بحث جديد" الأنيق للعودة عند الحاجة */
     .back-btn {
       font-family: var(--font-main);
       background: rgba(255, 255, 255, 0.05);
@@ -278,14 +277,29 @@
       color: #ffffff;
     }
 
+    /* التعديل المضيء للحقوق بنفس النص الأصلي */
     .credits {
       margin-top: 30px;
-      font-size: 10px;
-      color: rgba(6, 182, 212, 0.3); 
-      letter-spacing: 1px;
+      font-size: 13px;
+      color: #22d3ee;
+      text-shadow: 0 0 10px rgba(34, 211, 238, 0.6);
+      letter-spacing: 1.5px;
       font-family: 'Consolas', 'Courier New', monospace;
-      text-align: left;
-      padding-left: 5px;
+      font-weight: bold;
+      text-align: center;
+      background: rgba(6, 182, 212, 0.1);
+      padding: 8px;
+      border-radius: 8px;
+      border: 1px dashed rgba(6, 182, 212, 0.3);
+      display: inline-block;
+      width: calc(100% - 16px);
+      box-sizing: border-box;
+      animation: pulseGlow 2s infinite ease-in-out;
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { opacity: 0.8; box-shadow: 0 0 5px rgba(6, 182, 212, 0.1); }
+      50% { opacity: 1; box-shadow: 0 0 15px rgba(6, 182, 212, 0.3); }
     }
   </style>
 </head>
@@ -293,7 +307,6 @@
 
 <div class="container">
   
-  <!-- قسم البحث بالكامل (سيختفي فور العثور على النتيجة) -->
   <div id="searchSection" class="search-section">
     <div class="logo-area">
       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRef5idcLoAv_1MLhlacUkSOZUGm1HBSSL4PA&s" alt="شعار المدرسة" class="logo-img">
@@ -306,37 +319,101 @@
     <button id="searchBtn">استعلام عن النتيجة</button>
   </div>
   
-  <!-- مؤشر التحميل وصندوق رسائل الأخطاء -->
   <div id="loading" class="loading-spinner"></div>
   <div id="msgBox"></div>
   
-  <!-- قسم عرض النتيجة فقط (سيظهر بمفرده) -->
   <div id="resultBox">
     <div class="result-card">
       <div class="result-title">🎉 بيان درجات الطالب 🎉</div>
       <div id="resultCard"></div>
     </div>
-    <!-- زر ذكي للعودة للبحث مجدداً دون تحديث الصفحة -->
     <button class="back-btn" id="backBtn">🔍 استعلام عن رقم آخر</button>
   </div>
 
+  <!-- النص كما هو ولكن بتصميم بارز وواضح -->
   <div class="credits">&lt;/&gt; MOo_7_SeN</div>
 </div>
 
 <script>
   const API_URL = "https://script.google.com/macros/s/AKfycbx00I2C8ggJbaOsqN2PSzjrNBPw8jMePctm3heA62u1_bgWcow72IjHUhqeBHcJR5wZ/exec";
+  
+  const MAX_ATTEMPTS = 3;
+  const LOCK_TIME_MS = 60 * 60 * 1000; 
+  let countdownInterval = null;
+
+  function enforceLockStatus() {
+    const searchBtn = document.getElementById("searchBtn");
+    const msgBox = document.getElementById("msgBox");
+    const seatInput = document.getElementById("seatNumber");
+    
+    const lockTimestamp = localStorage.getItem("lockTimestamp");
+    
+    if (lockTimestamp) {
+      const remainingTime = parseInt(lockTimestamp) - Date.now();
+      
+      if (remainingTime > 0) {
+        searchBtn.disabled = true;
+        seatInput.disabled = true;
+        startCountdown(remainingTime);
+        return true; 
+      } else {
+        localStorage.removeItem("lockTimestamp");
+        localStorage.setItem("searchAttempts", "0");
+        searchBtn.disabled = false;
+        seatInput.disabled = false;
+        msgBox.innerHTML = "";
+        clearInterval(countdownInterval);
+      }
+    }
+    return false; 
+  }
+
+  function startCountdown(duration) {
+    const msgBox = document.getElementById("msgBox");
+    clearInterval(countdownInterval);
+    
+    function updateTimer() {
+      const now = Date.now();
+      const lockTimestamp = parseInt(localStorage.getItem("lockTimestamp") || "0");
+      const remaining = lockTimestamp - now;
+      
+      if (remaining <= 0) {
+        clearInterval(countdownInterval);
+        localStorage.removeItem("lockTimestamp");
+        localStorage.setItem("searchAttempts", "0");
+        document.getElementById("searchBtn").disabled = false;
+        document.getElementById("seatNumber").disabled = false;
+        msgBox.innerHTML = "✅ انتهى وقت الانتظار، يمكنك البحث الآن.";
+        msgBox.style.color = "#06b6d4";
+        return;
+      }
+      
+      const minutes = Math.floor((remaining % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((remaining % (1000 * 60)) / 1000);
+      
+      msgBox.style.color = "var(--error)";
+      msgBox.innerHTML = `⚠️ لقد استنفدت محاولاتك (3 مرات).<br>يرجى الانتظار ${minutes} دقيقة و ${seconds} ثانية لإعادة المحاولة.`;
+    }
+    
+    updateTimer();
+    countdownInterval = setInterval(updateTimer, 1000);
+  }
+
+  enforceLockStatus();
 
   document.getElementById("seatNumber").addEventListener("input", function(e) {
     this.value = this.value.replace(/[^0-9]/g, '');
   });
 
   document.getElementById("seatNumber").addEventListener("keypress", function(e) {
-    if (e.key === "Enter") {
+    if (e.key === "Enter" && !document.getElementById("searchBtn").disabled) {
       document.getElementById("searchBtn").click();
     }
   });
 
   document.getElementById("searchBtn").addEventListener("click", function() {
+    if (enforceLockStatus()) return;
+
     const seatNum = document.getElementById("seatNumber").value.trim();
     const searchSection = document.getElementById("searchSection");
     const loading = document.getElementById("loading");
@@ -348,6 +425,15 @@
       msgBox.style.color = "var(--error)";
       msgBox.innerHTML = "⚠️ برجاء كتابة رقم الجلوس أولاً!";
       return;
+    }
+
+    let attempts = parseInt(localStorage.getItem("searchAttempts") || "0");
+    attempts++;
+    localStorage.setItem("searchAttempts", attempts.toString());
+
+    if (attempts >= MAX_ATTEMPTS) {
+      const unlockTime = Date.now() + LOCK_TIME_MS;
+      localStorage.setItem("lockTimestamp", unlockTime.toString());
     }
     
     msgBox.innerHTML = "";
@@ -364,6 +450,7 @@
         if (text.trim().startsWith("<!DOCTYPE") || text.trim().startsWith("<html")) {
           msgBox.style.color = "var(--error)";
           msgBox.innerHTML = "❌ خطأ في إعدادات الوصول. تأكد من ضبط الصلاحية على Anyone.";
+          enforceLockStatus();
           return;
         }
 
@@ -373,6 +460,7 @@
         } catch(e) {
           msgBox.style.color = "var(--error)";
           msgBox.innerHTML = "❌ خطأ في معالجة البيانات القادمة من السيرفر.";
+          enforceLockStatus();
           return;
         }
         
@@ -391,7 +479,7 @@
               }
             }
 
-            if (valueText.includes("غائب") || valueText.includes("غايب")) {
+            if (valueText.includes("غائب") || valueText.includes("غ")) {
               statusClass = "class='value status-error'";
             }
             else if (valueText.includes("ناقل") || valueText.includes("منقول")) {
@@ -420,7 +508,6 @@
             }
           }
           
-          // 🔥 السحر هنا: إخفاء قسم البحث بالكامل وإظهار النتيجة فقط
           searchSection.classList.add("fade-out"); 
           msgBox.innerHTML = ""; 
           
@@ -429,21 +516,25 @@
         } else {
           msgBox.style.color = "var(--error)";
           msgBox.innerHTML = "🔍 عذراً، لم نجد أي نتيجة مرتبطة برقم الجلوس هذا.";
+          enforceLockStatus();
         }
       })
       .catch(err => {
         loading.style.display = "none";
         msgBox.style.color = "var(--error)";
         msgBox.innerHTML = "📡 فشل الاتصال بالسيرفر، تحقق من الإنترنت أو الرابط.";
+        enforceLockStatus();
       });
   });
 
-  // تفعيل عمل زر "استعلام عن رقم آخر" لإعادة إظهار صندوق البحث
   document.getElementById("backBtn").addEventListener("click", function() {
     document.getElementById("searchSection").classList.remove("fade-out");
     document.getElementById("resultBox").style.display = "none";
-    document.getElementById("seatNumber").value = ""; // تنظيف الخانة لبحث جديد
-    document.getElementById("seatNumber").focus();
+    
+    if (!enforceLockStatus()) {
+      document.getElementById("seatNumber").value = ""; 
+      document.getElementById("seatNumber").focus();
+    }
   });
 </script>
 </body>
