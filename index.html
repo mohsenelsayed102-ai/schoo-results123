@@ -277,29 +277,25 @@
       color: #ffffff;
     }
 
-    /* التعديل المضيء للحقوق بنفس النص الأصلي */
+    /* التعديل الجديد: الكلمة واضحة ومضيئة بدون أي إطار أو خلفية */
     .credits {
       margin-top: 30px;
-      font-size: 13px;
+      font-size: 14px;
       color: #22d3ee;
-      text-shadow: 0 0 10px rgba(34, 211, 238, 0.6);
+      text-shadow: 0 0 12px rgba(34, 211, 238, 0.7);
       letter-spacing: 1.5px;
       font-family: 'Consolas', 'Courier New', monospace;
       font-weight: bold;
       text-align: center;
-      background: rgba(6, 182, 212, 0.1);
-      padding: 8px;
-      border-radius: 8px;
-      border: 1px dashed rgba(6, 182, 212, 0.3);
       display: inline-block;
-      width: calc(100% - 16px);
+      width: 100%;
       box-sizing: border-box;
       animation: pulseGlow 2s infinite ease-in-out;
     }
 
     @keyframes pulseGlow {
-      0%, 100% { opacity: 0.8; box-shadow: 0 0 5px rgba(6, 182, 212, 0.1); }
-      50% { opacity: 1; box-shadow: 0 0 15px rgba(6, 182, 212, 0.3); }
+      0%, 100% { opacity: 0.75; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.02); text-shadow: 0 0 18px rgba(34, 211, 238, 0.9); }
     }
   </style>
 </head>
@@ -330,7 +326,7 @@
     <button class="back-btn" id="backBtn">🔍 استعلام عن رقم آخر</button>
   </div>
 
-  <!-- النص كما هو ولكن بتصميم بارز وواضح -->
+  <!-- الكلمة حرة بدون إطار أو خلفية ومضيئة بالكامل -->
   <div class="credits">&lt;/&gt; MOo_7_SeN</div>
 </div>
 
